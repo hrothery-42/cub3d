@@ -6,7 +6,7 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 14:38:21 by hrothery          #+#    #+#              #
-#    Updated: 2022/09/19 16:51:02 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/19 17:31:20 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIB = libft/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -30,7 +30,7 @@ ifeq ($(shell uname), Linux)
 
 $(NAME):$(OBJ)
 	make -C libft
-	$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz $(CFLAGS) $(GNL) $(LIBFT) -o $(NAME)
+	$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz $(CFLAGS) $(LIB) -o $(NAME)
 
 %o: %c 
 	$(CC) $(CFLAGS) -I/usr/include -Imlx -03 -c $< -o $@
@@ -41,7 +41,7 @@ ifeq ($(shell uname), Darwin)
 
 $(NAME): $(OBJ)
 	make -C libft
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(GNL) $(LIBFT) -o $(NAME)
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(LIB) -o $(NAME)
 
 %o: %c 
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
