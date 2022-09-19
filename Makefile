@@ -6,8 +6,54 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 14:38:21 by hrothery          #+#    #+#              #
-#    Updated: 2022/09/19 14:43:56 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/19 16:51:02 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-hello
+NAME = cub3D
+
+SRC = 	src/main.c
+
+OBJ = $(SRC:.c=.o)
+
+LIB = libft/libft.a
+
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -f
+
+all : $(NAME)
+
+ifeq ($(shell uname), Linux)
+
+$(NAME):$(OBJ)
+	make -C libft
+	$(CC) $(OBJ) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz $(CFLAGS) $(GNL) $(LIBFT) -o $(NAME)
+
+%o: %c 
+	$(CC) $(CFLAGS) -I/usr/include -Imlx -03 -c $< -o $@
+
+endif
+
+ifeq ($(shell uname), Darwin)
+
+$(NAME): $(OBJ)
+	make -C libft
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework Appkit $(CFLAGS) $(GNL) $(LIBFT) -o $(NAME)
+
+%o: %c 
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+endif
+
+clean:
+	$(RM) $(OBJ)
+	make clean -C libft
+
+fclean: clean
+	$(RM) $(NAME) 
+	make fclean -C libft
+
+re: fclean all 
