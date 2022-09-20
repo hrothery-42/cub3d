@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/19 15:26:49 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:42:21 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,37 @@
 
 #define mapWidth 24
 #define mapHeight 24
-#define screenWidth 800
-#define screenHeight 600
+#define screenWidth 500
+#define screenHeight 400
+#define	texWidth 64
+#define	texHeight 64
 
 int worldMap[mapWidth][mapHeight]=
 {
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
+  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
+  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
+  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
+  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
+  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
+  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
+  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
+  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
+  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
+  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
+  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
+  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
+  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
+  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
 };
 
 void	raycasting(t_values *vars)
@@ -100,7 +102,11 @@ void	raycasting(t_values *vars)
 				vars->side = 1;
 			}
 			if (worldMap[vars->mapX][vars->mapY] > 0)
+			{
 				vars->hit = 1;
+				printf("mX:%d mY:%d px:%d py:%d\n", vars->mapX, vars->mapY, vars->mapX - vars->stepX, vars->mapY - vars->stepY);
+				
+			}
 		}
 		if (vars->side == 0)
 			vars->perpWallDist = (vars->sideDistX - vars->deltaDistX);
@@ -114,6 +120,7 @@ void	raycasting(t_values *vars)
 		vars->drawEnd = vars->lineHeight / 2 + vars->h / 2;
 		if (vars->drawEnd >= vars->h)
 			vars->drawEnd = vars->h - 1;
+
 		if (worldMap[vars->mapX][vars->mapY] == 1)
 			vars->color = 0xffffff;
 		else if (worldMap[vars->mapX][vars->mapY] == 2)
@@ -124,6 +131,7 @@ void	raycasting(t_values *vars)
 			vars->color = 0xe80c0c / 2;
 		if (vars->side == 1)
 			vars->color = vars->color / 2;
+
 		d = vars->drawStart;
 		while (d < vars->drawEnd)
 		{
@@ -164,8 +172,6 @@ int	keys(int key, t_values *vars)
 	if (key == 53)
 	{
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-		// if (vars->img_ptr)
-		// 	mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
 		exit(0);
 	}
 	else if (key == 13)
@@ -214,14 +220,6 @@ int	keys(int key, t_values *vars)
 		vars->planeX = vars->planeX * cos(-0.2) - vars->planeY * sin(-0.2);
 		vars->planeY = vars->oldPlaneX * sin(-0.2) + vars->planeY * cos(-0.2);
 	}
-	// mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
-	// vars->img_ptr = mlx_new_image(vars->mlx_ptr, screenWidth, screenHeight);
-	// vars->img = mlx_get_data_addr(vars->img_ptr, &vars->bits, &vars->line,
-	// 		&vars->end);
-	// raycasting(vars);
-	// draw_fc(vars);
-	// mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
-	printf("posX:%f posY:%f dX:%f dY:%f pX:%f pY:%f\n", vars->posX, vars->posY, vars->dirX, vars->dirY, vars->planeX, vars->planeY);
 	return (0);
 }
 
@@ -237,15 +235,17 @@ int	test(t_values *vars)
 	return (0);
 }
 
-int	hook(t_values *vars)
+void	textures(t_values *vars)
 {
-	// mlx_loop_hook(vars->mlx_ptr, test, &vars);
-	// mlx_hook(vars->win_ptr, 2, 0, keys, &vars);
-	// mlx_loop_hook(vars->mlx_ptr, test, &vars);
-	mlx_loop(vars->mlx_ptr);
-	return (0);
+	vars->tex1 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/eagle.png", vars->width1, vars->height1);
+	vars->tex2 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/redbrick.png", vars->width2, vars->height2);
+	vars->tex3 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/purplestone.png", vars->width3, vars->height3);
+	vars->tex4 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/greystone.png", vars->width4, vars->height4);
+	vars->tex5 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/bluestone.png", vars->width5, vars->height5);
+	vars->tex6 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/mossy.png", vars->width6, vars->height6);
+	vars->tex7 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/wood.png", vars->width7, vars->height7);
+	vars->tex8 = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/colorstone.png", vars->width8, vars->height8);
 }
-
 int	main()
 {
 	t_values	vars;
@@ -267,14 +267,13 @@ int	main()
 	if (vars.img_ptr == NULL)
 		return (0);
 	vars.img = mlx_get_data_addr(vars.img_ptr, &vars.bits, &vars.line, &vars.end);
+	textures(&vars);
 	raycasting(&vars);
 	draw_fc(&vars);
 	mlx_put_image_to_window(vars.mlx_ptr, vars.win_ptr, vars.img_ptr, 0, 0);
 	mlx_hook(vars.win_ptr, 2, 0, keys, &vars);
 	mlx_loop_hook(vars.mlx_ptr, test, &vars);
 	mlx_loop(vars.mlx_ptr);
-	// hook(&vars);
-	// test(&vars);
 	
 	return (0);
 }
