@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 09:08:41 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:03:40 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@
 
 //parser.c
 int		parse_input(char *argv, t_values *vars);
+
+//parser_utils.c
+char	first_char(char *line);
+void	replace_newline(char *line);
+void	write_nswefc(t_values *vars, char *line);
 
 #endif
