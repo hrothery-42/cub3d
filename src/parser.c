@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 14:56:13 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:15:05 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	allocate_map(t_values *vars)
 {
 	int	i;
 
-	vars->map = malloc(sizeof(char *) * (vars->nr_rows));
+	vars->map = malloc(sizeof(char *) * (vars->nr_rows + 1));
 	if (!vars->map)
 	{
 		ft_putstr_fd("Error: memory allocation failed\n", 2);
@@ -69,6 +69,7 @@ void	allocate_map(t_values *vars)
 		}
 		i++;
 	}
+	vars->map[i] = NULL;
 }
 
 static void	ft_count(int fd, t_values *vars)
@@ -136,7 +137,7 @@ int	parse_input(char *argv, t_values *vars)
 	vars->nswefc[6] = 1;
 	count_map_rows(argv, vars);
 	allocate_map(vars);
-	if (init_t_values(argv, vars))
+	if (init_t_values(argv, vars)|| check_map(vars))
 	{
 		ft_putstr_fd("Check the file content for invalid input\n", 2);
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 12:31:19 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:04:40 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ bool	init_value(char *line, t_values *vars);
 
 //parser_utils2.c
 bool	save_color(char *color, t_color *l);
+bool	check_map(t_values *vars);
 
 #endif

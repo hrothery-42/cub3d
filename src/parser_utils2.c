@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:29:11 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 14:59:52 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:15:03 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,97 @@ bool	save_color(char *color, t_color *l)
 		ft_putstr_fd("error: color value(s): floor and/or ceiling\n", 2);
 	ft_double_free(tmp);
 	return (ret);
+}
+
+bool	check_character(char c, t_values *vars)
+{
+	if (c == '1' || c == '0' || c == ' ' || c == '\0')
+		return (0);
+	else if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	{
+		vars->start_position++;
+		return (0);
+	}
+	return (1);
+}
+
+bool	left_wall(int i, int j, t_values *vars)
+{
+	while (j > 0)
+	{
+		j--;
+		if (vars->map[i][j] == '1')
+			return (0);
+	}
+	return (1);
+}
+
+bool	right_wall(int i, int j, t_values *vars)
+{
+	while (vars->map[i][j] && j < vars->nr_columns)
+	{
+		j++;
+		if (vars->map[i][j] == '1')
+			return (0);
+	}
+	return (1);
+}
+
+bool	top_wall(int i, int j, t_values *vars)
+{
+	while (i > 0)
+	{
+		i--;
+		if (vars->map[i][j] == '1')
+			return (0);
+	}
+	return (1);
+}
+
+bool	bottom_wall(int i, int j, t_values *vars)
+{
+	while (i < vars->nr_rows - 1)
+	{
+		i++;
+		if (vars->map[i][j] == '1')
+			return (0);
+	}
+	return (1);
+}
+
+bool	check_map(t_values *vars)
+{
+	vars->start_position = 0;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < vars->nr_rows)
+	{
+		j = 0;
+		while (j < vars->nr_columns)
+		{
+			if (check_character(vars->map[i][j], vars))
+			{
+				ft_putstr_fd("invalid character on the map\n", 2);
+				return (1);
+			}
+			if (vars->map[i][j] == '0')
+			{
+				if (left_wall(i, j, vars) || right_wall(i, j, vars) || top_wall(i, j, vars) || bottom_wall(i, j, vars))
+				{
+					ft_putstr_fd("The map is not surrounded by walls\n", 2);
+					return (1);
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+	if (vars->start_position != 1)
+	{
+		ft_putstr_fd("wrong number of starting positions\n", 2);
+		return (1);
+	}
+	return (0);
 }

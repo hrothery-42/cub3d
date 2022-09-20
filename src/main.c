@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:51:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 14:57:24 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:15:57 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	main(int argc, char **argv)
 	{
 		//run the program
 	}
-	ft_double_free(vars.map);
+	//ft_double_free(vars.map);
 	return (0);
 }
