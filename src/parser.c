@@ -6,26 +6,42 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 11:19:01 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:55:36 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
+bool	init_value(char *line, t_values *vars)
+{
+	return (0);
+}
+
 bool	init_t_values(char *argv, t_values *vars)
 {
 	int		fd;
 	char	*line;
-	bool	map;
-	
-	fd = open(argv, O_RDONLY);
+	int		count;
+	int		j;
+
+	count = 0;
+	j = 0;
 	line = (char *)1;
-	map = 0;
+	fd = open(argv, O_RDONLY);
 	while (line)
 	{
 		line = get_next_line(fd);
 		replace_newline(line);
-		
+		if (count < 7 && !is_only_whitespaces(line))
+			init_value(line, vars);
+		else if ((count == 7 && !is_only_whitespaces(line)) || count > 7)
+		{
+			if (j == vars->nr_rows)
+				break ;
+			ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
+		}
+		count++;
+		free(line);
 	}
 	close(fd);
 }
