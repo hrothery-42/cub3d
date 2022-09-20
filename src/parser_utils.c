@@ -6,11 +6,48 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:33:28 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 11:19:08 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:29:49 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
+
+bool	save_fd(char *path, int *location)
+{
+	int	fd;
+
+	//fd = open(path, O_RDONLY);
+	//if (fd < 0)
+	//	return (1);
+	//*location = fd;
+	return (0);
+}
+
+bool	init_value(char *line, t_values *vars)
+{
+	char	**tmp;
+	bool	ret;
+
+	tmp = ft_split(line, ' ');
+	if (!tmp[1] || tmp[2])
+		ret = 1;
+	else if (!ft_strcmp(tmp[0], "NO"))
+		ret = save_fd(tmp[1], &vars->fd_no);
+	else if (!ft_strcmp(tmp[0], "SO"))
+		ret = save_fd(tmp[1], &vars->fd_so);
+	else if (!ft_strcmp(tmp[0], "WE"))
+		ret = save_fd(tmp[1], &vars->fd_we);
+	else if (!ft_strcmp(tmp[0], "EA"))
+		ret = save_fd(tmp[1], &vars->fd_ea);
+	else if (!ft_strcmp(tmp[0], "F"))
+		ret = save_color(tmp[1], &vars->floor);
+	else if (!ft_strcmp(tmp[0], "C"))
+		ret = save_color(tmp[1], &vars->ceiling);
+	else
+		ret = 1;
+	ft_double_free(tmp);
+	return (ret);
+}
 
 void	write_nswefc(t_values *vars, char *line)
 {

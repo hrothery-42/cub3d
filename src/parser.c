@@ -6,16 +6,11 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 11:55:36 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 14:56:13 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
-
-bool	init_value(char *line, t_values *vars)
-{
-	return (0);
-}
 
 bool	init_t_values(char *argv, t_values *vars)
 {
@@ -33,7 +28,13 @@ bool	init_t_values(char *argv, t_values *vars)
 		line = get_next_line(fd);
 		replace_newline(line);
 		if (count < 7 && !is_only_whitespaces(line))
-			init_value(line, vars);
+		{
+			if (init_value(line, vars))
+			{
+				ft_putstr_fd("false value\n", 2);
+				return (1);
+			}
+		}
 		else if ((count == 7 && !is_only_whitespaces(line)) || count > 7)
 		{
 			if (j == vars->nr_rows)
@@ -50,7 +51,7 @@ void	allocate_map(t_values *vars)
 {
 	int	i;
 
-	vars->map = (char **)malloc(sizeof(char *) * vars->nr_rows);
+	vars->map = malloc(sizeof(char *) * (vars->nr_rows));
 	if (!vars->map)
 	{
 		ft_putstr_fd("Error: memory allocation failed\n", 2);
@@ -136,6 +137,9 @@ int	parse_input(char *argv, t_values *vars)
 	count_map_rows(argv, vars);
 	allocate_map(vars);
 	if (init_t_values(argv, vars))
+	{
+		ft_putstr_fd("Check the file content for invalid input\n", 2);
 		return (1);
+	}
 	return (0);
 }
