@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:51:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/19 17:38:25 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 09:16:56 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,16 @@ static int	check_file(int argc, char *argv)
 	return (0);
 }
 
+void	print_struct(t_values *vars)
+{
+	
+}
+
 int	main(int argc, char **argv)
 {
-	t_values	val;
+	t_values	vars;
 	
-	if (check_file(argc, argv[1]) || parse_input(argv[1], &val))
+	if (check_file(argc, argv[1]) || parse_input(argv[1], &vars))
 	{
 		//free all memory, close mlx
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/19 17:36:01 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 09:08:41 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <stdio.h> //perror
 # include <stdlib.h> //malloc, free, exit
 # include <unistd.h> // write, read
+# include <stdbool.h>
 # include "../libft/libft.h"
 
 //parser.c
-int		parse_input(char *argv, t_values *val);
+int		parse_input(char *argv, t_values *vars);
 
 #endif
