@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 15:04:40 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:49:19 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,17 @@ bool	init_value(char *line, t_values *vars);
 //parser_utils2.c
 bool	save_color(char *color, t_color *l);
 bool	check_map(t_values *vars);
+
+//space_check.c
+bool	left_border(int i, int j, t_values *vars);
+bool	right_border(int i, int j, t_values *vars);
+bool	top_border(int i, int j, t_values *vars);
+bool	bottom_border(int i, int j, t_values *vars);
+
+//wall_check.c
+bool	left_wall(int i, int j, t_values *vars);
+bool	right_wall(int i, int j, t_values *vars);
+bool	top_wall(int i, int j, t_values *vars);
+bool	bottom_wall(int i, int j, t_values *vars);
 
 #endif

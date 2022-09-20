@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:29:11 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 16:27:45 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/20 16:47:17 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,100 +44,22 @@ bool	check_character(char c, t_values *vars)
 		//initialize the struct with the direction
 		return (0);
 	}
+	ft_putstr_fd("invalid charcter on the map\n", 2);
 	return (1);
 }
 
-bool	left_wall(int i, int j, t_values *vars)
+static bool	check_map_more(int i, int j, t_values *vars)
 {
-	while (j > 0)
+	if (check_character(vars->map[i][j], vars))
+		return (1);
+	if (vars->map[i][j] == '0')
 	{
-		j--;
-		if (vars->map[i][j] == '1')
-			return (0);
-	}
-	return (1);
-}
-
-bool	left_border(int i, int j, t_values *vars)
-{
-	while (j > 0)
-	{
-		j--;
-		if (vars->map[i][j] == '1')
-			return (0);
-		if (vars->map[i][j] == '0')
+		if (left_wall(i, j, vars) || right_wall(i, j, vars) || top_wall(i, j, vars) || bottom_wall(i, j, vars))
 			return (1);
 	}
-	return (0);
-}
-
-bool	right_wall(int i, int j, t_values *vars)
-{
-	while (vars->map[i][j] && j < vars->nr_columns)
+	if (vars->map[i][j] == ' ')
 	{
-		j++;
-		if (vars->map[i][j] == '1')
-			return (0);
-	}
-	return (1);
-}
-
-bool	right_border(int i, int j, t_values *vars)
-{
-	while (vars->map[i][j] && j < vars->nr_columns)
-	{
-		j++;
-		if (vars->map[i][j] == '1')
-			return (0);
-		if (vars->map[i][j] == '0')
-			return (1);
-	}
-	return (0);
-}
-
-bool	top_wall(int i, int j, t_values *vars)
-{
-	while (i > 0)
-	{
-		i--;
-		if (vars->map[i][j] == '1')
-			return (0);
-	}
-	return (1);
-}
-
-bool	top_border(int i, int j, t_values *vars)
-{
-	while (i > 0)
-	{
-		i--;
-		if (vars->map[i][j] == '1')
-			return (0);
-		if (vars->map[i][j] == '0')
-			return (1);
-	}
-	return (0);
-}
-
-bool	bottom_wall(int i, int j, t_values *vars)
-{
-	while (i < vars->nr_rows - 1)
-	{
-		i++;
-		if (vars->map[i][j] == '1')
-			return (0);
-	}
-	return (1);
-}
-
-bool	bottom_border(int i, int j, t_values *vars)
-{
-	while (i < vars->nr_rows - 1)
-	{
-		i++;
-		if (vars->map[i][j] == '1')
-			return (0);
-		if (vars->map[i][j] == '0')
+		if (top_border(i, j, vars) || bottom_border(i, j, vars) || left_border(i, j, vars) || right_border(i, j, vars))
 			return (1);
 	}
 	return (0);
@@ -155,27 +77,8 @@ bool	check_map(t_values *vars)
 		j = 0;
 		while (j < vars->nr_columns)
 		{
-			if (check_character(vars->map[i][j], vars))
-			{
-				ft_putstr_fd("invalid character on the map\n", 2);
+			if (check_map_more(i, j, vars))
 				return (1);
-			}
-			if (vars->map[i][j] == '0')
-			{
-				if (left_wall(i, j, vars) || right_wall(i, j, vars) || top_wall(i, j, vars) || bottom_wall(i, j, vars))
-				{
-					ft_putstr_fd("The map is not surrounded by walls\n", 2);
-					return (1);
-				}
-			}
-			if (vars->map[i][j] == ' ')
-			{
-				if (top_border(i, j, vars) || bottom_border(i, j, vars) || left_border(i, j, vars) || right_border(i, j, vars))
-				{
-					ft_putstr_fd("The map has spaces in the middle\n", 2);
-					return (1);
-				}
-			}
 			j++;
 		}
 		i++;
