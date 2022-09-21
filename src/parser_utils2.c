@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:29:11 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 16:47:17 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:18:02 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ static bool	check_map_more(int i, int j, t_values *vars)
 
 bool	check_map(t_values *vars)
 {
-	vars->start_position = 0;
 	int	i;
 	int	j;
 
+	vars->start_position = 0;
 	i = 0;
 	while (i < vars->nr_rows)
 	{

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 15:15:05 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:22:59 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,22 @@ bool	init_t_values(char *argv, t_values *vars)
 	{
 		line = get_next_line(fd);
 		replace_newline(line);
-		if (count < 7 && !is_only_whitespaces(line))
+		if (count < 6 && !is_only_whitespaces(line))
 		{
+			count++;
 			if (init_value(line, vars))
 			{
 				ft_putstr_fd("false value\n", 2);
 				return (1);
 			}
 		}
-		else if ((count == 7 && !is_only_whitespaces(line)) || count > 7)
+		else if ((count == 6 && !is_only_whitespaces(line)) || count > 6)
 		{
+			count++;
 			if (j == vars->nr_rows)
 				break ;
 			ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
 		}
-		count++;
 		free(line);
 	}
 	close(fd);
@@ -120,7 +121,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	{
 		if (vars->nswefc[i] != 1)
 		{
-			ft_putstr_fd("Error: file: duplicate/ missing/ invalid identifiers\n", 2);
+			ft_putstr_fd("Error: file: invalid identifiers\n", 2);
 			exit(0);
 		}
 		i++;
