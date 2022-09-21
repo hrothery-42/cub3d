@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 09:31:37 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:20:50 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ bool	init_t_values(char *argv, t_values *vars)
 	int		count;
 	bool	ret;
 
-	count = 0;
 	ret = 0;
+	count = 0;
 	line = (char *)1;
 	fd = open(argv, O_RDONLY);
 	while (line)
 	{
 		line = get_next_line(fd);
 		replace_newline(line);
-		sort_data(vars, line, count, &ret);
+		sort_data(vars, line, &count, &ret);
 		free(line);
 	}
 	close(fd);
@@ -109,7 +109,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	{
 		if (vars->nswefc[i] != 1)
 		{
-			ft_putstr_fd("Error!\nFile: invalid identifiers.\n", 2);
+			ft_putstr_fd("Error!\nFile: missing/invalid identifiers.\n", 2);
 			exit(0);
 		}
 		i++;

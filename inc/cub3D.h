@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 09:32:57 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:11:14 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool	left_border(int i, int j, t_values *vars);
 bool	right_border(int i, int j, t_values *vars);
 bool	top_border(int i, int j, t_values *vars);
 bool	bottom_border(int i, int j, t_values *vars);
-void	sort_data(t_values *vars, char *line, int count, bool *ret);
+void	sort_data(t_values *vars, char *line, int *count, bool *ret);
 
 //wall_check.c
 bool	left_wall(int i, int j, t_values *vars);
