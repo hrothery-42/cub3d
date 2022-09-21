@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:29:11 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 16:59:01 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:04:40 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,6 @@ bool	save_color(char *color, t_color *l)
 		ft_putstr_fd("Error!\nColor value(s): floor and/or ceiling.\n", 2);
 	ft_double_free(tmp);
 	return (ret);
-}
-
-void	init_pos_and_dir(char c, t_values *vars, int i, int j)
-{
-	/* posX = i;
-	posY = j;
-	if (c == 'N')
-	{
-		dirX = 0; 
-		dirY = 1;
-	}
-	else if (c == 'S')
-	{
-		dirX = 0;
-		dirY = -1;
-	}
-	else if (c == 'W')
-	{
-		dirX = -1;
-		dirY = 0;
-	}
-	else if (c == 'E')
-	{
-		dirX = 1;
-		dirY = 0;
-	} */
 }
 
 bool	check_character(char c, t_values *vars, int i, int j)

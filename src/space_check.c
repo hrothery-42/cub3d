@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:45:06 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 16:18:28 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:05:33 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,3 @@ bool	bottom_border(int i, int j, t_values *vars)
 	return (0);
 }
 
-void	sort_data(t_values *vars, char *line, int *count, bool *ret)
-{
-	int	j;
-
-	if (*count < 6 && !is_only_whitespaces(line))
-	{
-		(*count)++;
-		if (init_value(line, vars))
-		{
-			ft_putstr_fd("error: ", 2);
-			ft_putstr_fd(line, 2);
-			*ret = 1;
-		}
-	}
-	else if ((*count == 6 && !is_only_whitespaces(line)) || *count > 6)
-	{
-		j = (*count) - 6;
-		(*count)++;
-		if (j == vars->nr_rows)
-			return ;
-		ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
-	}
-}

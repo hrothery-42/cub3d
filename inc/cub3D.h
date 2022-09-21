@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 16:11:14 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:06:13 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ bool	init_value(char *line, t_values *vars);
 bool	save_color(char *color, t_color *l);
 bool	check_map(t_values *vars);
 
+//parser_utils3.c
+void	sort_data(t_values *vars, char *line, int *count, bool *ret);
+void	init_pos_and_dir(char c, t_values *vars, int i, int j);
+
 //space_check.c
 bool	left_border(int i, int j, t_values *vars);
 bool	right_border(int i, int j, t_values *vars);
 bool	top_border(int i, int j, t_values *vars);
 bool	bottom_border(int i, int j, t_values *vars);
-void	sort_data(t_values *vars, char *line, int *count, bool *ret);
 
 //wall_check.c
 bool	left_wall(int i, int j, t_values *vars);
