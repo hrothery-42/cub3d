@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 09:24:12 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:31:37 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ bool	init_t_values(char *argv, t_values *vars)
 	int		fd;
 	char	*line;
 	int		count;
-	int		j;
 	bool	ret;
 
 	count = 0;
-	j = 0;
 	ret = 0;
 	line = (char *)1;
 	fd = open(argv, O_RDONLY);
@@ -29,19 +27,7 @@ bool	init_t_values(char *argv, t_values *vars)
 	{
 		line = get_next_line(fd);
 		replace_newline(line);
-		if (count < 6 && !is_only_whitespaces(line))
-		{
-			count++;
-			if (init_value(line, vars))
-				ret = 1;
-		}
-		else if (count == 6 && !is_only_whitespaces(line) || count > 6)
-		{
-			count++;
-			if (j == vars->nr_rows)
-				break ;
-			ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
-		}
+		sort_data(vars, line, count, &ret);
 		free(line);
 	}
 	close(fd);

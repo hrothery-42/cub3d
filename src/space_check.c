@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:45:06 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 08:30:05 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:33:07 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,24 @@ bool	bottom_border(int i, int j, t_values *vars)
 		}
 	}
 	return (0);
+}
+
+void	sort_data(t_values *vars, char *line, int count, bool *ret)
+{
+	int	j;
+
+	j = 0;
+	if (count < 6 && !is_only_whitespaces(line))
+	{
+		count++;
+		if (init_value(line, vars))
+			*ret = 1;
+	}
+	else if (count == 6 && !is_only_whitespaces(line) || count > 6)
+	{
+		count++;
+		if (j == vars->nr_rows)
+			return ;
+		ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
+	}
 }
