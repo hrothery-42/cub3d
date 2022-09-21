@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 08:43:41 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:24:12 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ bool	init_t_values(char *argv, t_values *vars)
 	char	*line;
 	int		count;
 	int		j;
+	bool	ret;
 
 	count = 0;
 	j = 0;
+	ret = 0;
 	line = (char *)1;
 	fd = open(argv, O_RDONLY);
 	while (line)
@@ -31,10 +33,7 @@ bool	init_t_values(char *argv, t_values *vars)
 		{
 			count++;
 			if (init_value(line, vars))
-			{
-				ft_putstr_fd("Error!\nFalse identifier or value.\n", 2);
-				return (1);
-			}
+				ret = 1;
 		}
 		else if (count == 6 && !is_only_whitespaces(line) || count > 6)
 		{
@@ -46,7 +45,9 @@ bool	init_t_values(char *argv, t_values *vars)
 		free(line);
 	}
 	close(fd);
-	return (0);
+	if (ret == 1)
+		ft_putstr_fd("Error!\nFalse identifier or input.\n", 2);
+	return (ret);
 }
 
 void	allocate_map(t_values *vars)
@@ -139,7 +140,7 @@ int	parse_input(char *argv, t_values *vars)
 	vars->nswefc[6] = 1;
 	count_map_rows(argv, vars);
 	allocate_map(vars);
-	if (init_t_values(argv, vars)|| check_map(vars))
+	if (init_t_values(argv, vars) || check_map(vars))
 	{
 		ft_putstr_fd("Check the file content.\n", 2);
 		return (1);

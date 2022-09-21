@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:51:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 15:15:57 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 09:05:26 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,30 @@ bool	check_file(int argc, char *argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Wrong number of arguments!  Please use the path to a cub file.\n", 2);
+		ft_putstr_fd("Error!\nWrong number of arguments!  Use a cub file.\n", 2);
 		return (1);
 	}
 	i = ft_strlen(argv) - 1;
 	if (i < 4 || argv[i] != 'b' || argv[i - 1] != 'u' || argv[i - 2] != 'c'\
 	|| argv[i - 3] != '.')
 	{
-		ft_putstr_fd("Error!  You need to use a .cub file.\n", 2);
+		ft_putstr_fd("Error!\nUse a .cub file.\n", 2);
 		return (1);
 	}
 	return (0);
 }
 
-void	print_struct(t_values *vars)
-{
-	
-}
-
 int	main(int argc, char **argv)
 {
 	t_values	vars;
-	
-	if (check_file(argc, argv[1]) || parse_input(argv[1], &vars))
+
+	if (check_file(argc, argv[1]))
+		return (0);
+	if (!parse_input(argv[1], &vars))
 	{
-		//run the program
+		//run the game
+		printf("everything ok!\n");
 	}
-	//ft_double_free(vars.map);
+	ft_double_free(vars.map);
 	return (0);
 }
