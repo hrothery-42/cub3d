@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:45:06 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 09:33:07 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:30:58 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void	sort_data(t_values *vars, char *line, int count, bool *ret)
 	int	j;
 
 	j = 0;
-	if (count < 6 && !is_only_whitespaces(line))
+	if (count < 6 && !is_only_whitespaces(line) && !(*ret))
 	{
 		count++;
 		if (init_value(line, vars))
 			*ret = 1;
 	}
-	else if (count == 6 && !is_only_whitespaces(line) || count > 6)
+	else if ((count == 6 && !is_only_whitespaces(line) || count > 6) && !(*ret)
 	{
 		count++;
 		if (j == vars->nr_rows)
