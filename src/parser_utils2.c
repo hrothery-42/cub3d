@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:29:11 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 08:48:31 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:59:01 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,40 @@ bool	save_color(char *color, t_color *l)
 	return (ret);
 }
 
-bool	check_character(char c, t_values *vars)
+void	init_pos_and_dir(char c, t_values *vars, int i, int j)
+{
+	/* posX = i;
+	posY = j;
+	if (c == 'N')
+	{
+		dirX = 0; 
+		dirY = 1;
+	}
+	else if (c == 'S')
+	{
+		dirX = 0;
+		dirY = -1;
+	}
+	else if (c == 'W')
+	{
+		dirX = -1;
+		dirY = 0;
+	}
+	else if (c == 'E')
+	{
+		dirX = 1;
+		dirY = 0;
+	} */
+}
+
+bool	check_character(char c, t_values *vars, int i, int j)
 {
 	if (c == '1' || c == '0' || c == ' ' || c == '\0')
 		return (0);
 	else if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
 		vars->start_position++;
-		//initialize the struct with the direction
+		init_pos_and_dir(c, vars, i, j);
 		return (0);
 	}
 	ft_putstr_fd("Error!\nInvalid charcter on the map.\n", 2);
@@ -52,7 +78,7 @@ bool	check_character(char c, t_values *vars)
 
 static bool	check_map_more(int i, int j, t_values *vars)
 {
-	if (check_character(vars->map[i][j], vars))
+	if (check_character(vars->map[i][j], vars, i, j))
 		return (1);
 	if (vars->map[i][j] == '0')
 	{
