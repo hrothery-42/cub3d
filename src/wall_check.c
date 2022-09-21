@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:46:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 16:47:09 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:30:15 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	left_wall(int i, int j, t_values *vars)
 		if (vars->map[i][j] == '1')
 			return (0);
 	}
-	ft_putstr_fd("The wall is not complete\n", 2);
+	ft_putstr_fd("Error!\nThe wall is not complete.\n", 2);
 	return (1);
 }
 
@@ -32,7 +32,7 @@ bool	right_wall(int i, int j, t_values *vars)
 		if (vars->map[i][j] == '1')
 			return (0);
 	}
-	ft_putstr_fd("The wall is not complete\n", 2);
+	ft_putstr_fd("Error!\nThe wall is not complete.\n", 2);
 	return (1);
 }
 
@@ -44,7 +44,7 @@ bool	top_wall(int i, int j, t_values *vars)
 		if (vars->map[i][j] == '1')
 			return (0);
 	}
-	ft_putstr_fd("The wall is not complete\n", 2);
+	ft_putstr_fd("Error!\nThe wall is not complete.\n", 2);
 	return (1);
 }
 
@@ -56,6 +56,6 @@ bool	bottom_wall(int i, int j, t_values *vars)
 		if (vars->map[i][j] == '1')
 			return (0);
 	}
-	ft_putstr_fd("The wall is not complete\n", 2);
+	ft_putstr_fd("Error!\nThe wall is not complete.\n", 2);
 	return (1);
 }

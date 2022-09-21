@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:34:12 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 08:22:59 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:43:41 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ bool	init_t_values(char *argv, t_values *vars)
 			count++;
 			if (init_value(line, vars))
 			{
-				ft_putstr_fd("false value\n", 2);
+				ft_putstr_fd("Error!\nFalse identifier or value.\n", 2);
 				return (1);
 			}
 		}
-		else if ((count == 6 && !is_only_whitespaces(line)) || count > 6)
+		else if (count == 6 && !is_only_whitespaces(line) || count > 6)
 		{
 			count++;
 			if (j == vars->nr_rows)
@@ -46,6 +46,7 @@ bool	init_t_values(char *argv, t_values *vars)
 		free(line);
 	}
 	close(fd);
+	return (0);
 }
 
 void	allocate_map(t_values *vars)
@@ -55,7 +56,7 @@ void	allocate_map(t_values *vars)
 	vars->map = malloc(sizeof(char *) * (vars->nr_rows + 1));
 	if (!vars->map)
 	{
-		ft_putstr_fd("Error: memory allocation failed\n", 2);
+		ft_putstr_fd("Error!\nMemory allocation failed.\n", 2);
 		exit(0);
 	}
 	i = 0;
@@ -64,7 +65,7 @@ void	allocate_map(t_values *vars)
 		vars->map[i] = ft_calloc(vars->nr_columns + 1, sizeof(char));
 		if (!vars->map[i])
 		{
-			ft_putstr_fd("Error: malloc failed\n", 2);
+			ft_putstr_fd("Error!\nMemory allocation failed.\n", 2);
 			ft_double_free(vars->map);
 			exit(0);
 		}
@@ -111,7 +112,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd("Error opening file\n", 2);
+		ft_putstr_fd("Error!\nCannot open file.\n", 2);
 		exit(0);
 	}
 	ft_count(fd, vars);
@@ -121,7 +122,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	{
 		if (vars->nswefc[i] != 1)
 		{
-			ft_putstr_fd("Error: file: invalid identifiers\n", 2);
+			ft_putstr_fd("Error!\nFile: invalid identifiers.\n", 2);
 			exit(0);
 		}
 		i++;
@@ -130,7 +131,7 @@ void	count_map_rows(char *argv, t_values *vars)
 
 int	parse_input(char *argv, t_values *vars)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (i < 6)
@@ -140,7 +141,7 @@ int	parse_input(char *argv, t_values *vars)
 	allocate_map(vars);
 	if (init_t_values(argv, vars)|| check_map(vars))
 	{
-		ft_putstr_fd("Check the file content for invalid input\n", 2);
+		ft_putstr_fd("Check the file content.\n", 2);
 		return (1);
 	}
 	return (0);

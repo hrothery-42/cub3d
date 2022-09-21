@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 16:45:06 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/20 16:46:15 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/21 08:30:05 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	left_border(int i, int j, t_values *vars)
 			return (0);
 		if (vars->map[i][j] == '0')
 		{
-			ft_putstr_fd("There are empty spaces inside the map\n", 2);
+			ft_putstr_fd("Error!\nThere are empty spaces inside the map.\n", 2);
 			return (1);
 		}
 	}
@@ -37,7 +37,7 @@ bool	right_border(int i, int j, t_values *vars)
 			return (0);
 		if (vars->map[i][j] == '0')
 		{
-			ft_putstr_fd("There are empty spaces inside the map\n", 2);
+			ft_putstr_fd("Error!\nThere are empty spaces inside the map.\n", 2);
 			return (1);
 		}
 	}
@@ -53,7 +53,7 @@ bool	top_border(int i, int j, t_values *vars)
 			return (0);
 		if (vars->map[i][j] == '0')
 		{
-			ft_putstr_fd("There are empty spaces inside the map\n", 2);
+			ft_putstr_fd("Error!\nThere are empty spaces inside the map.\n", 2);
 			return (1);
 		}
 	}
@@ -69,7 +69,7 @@ bool	bottom_border(int i, int j, t_values *vars)
 			return (0);
 		if (vars->map[i][j] == '0')
 		{
-			ft_putstr_fd("There are empty spaces inside the map\n", 2);
+			ft_putstr_fd("Error!\nThere are empty spaces inside the map.\n", 2);
 			return (1);
 		}
 	}

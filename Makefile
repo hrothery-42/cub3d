@@ -6,13 +6,14 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 14:38:21 by hrothery          #+#    #+#              #
-#    Updated: 2022/09/20 12:44:10 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/20 16:45:01 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRC = 	src/main.c src/parser.c src/parser_utils.c src/parser_utils2.c
+SRC = 	src/main.c src/parser.c src/parser_utils.c src/parser_utils2.c \
+		src/wall_check.c src/space_check.c
 
 OBJ = $(SRC:.c=.o)
 
