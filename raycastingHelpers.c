@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycastingHelpers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:52:09 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/21 16:20:46 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:19:42 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int worldMaps[mapWidth][mapHeight]=
+int worldMaps[MAPWIDTH][MAPHEIGHT]=
 {
   {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
   {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
@@ -42,41 +42,41 @@ int worldMaps[mapWidth][mapHeight]=
 
 void	raycast1(t_values *vars)
 {
-	vars->rayDirX = vars->dirX + vars->planeX * vars->cameraX;
-	vars->rayDirY = vars->dirY + vars->planeY * vars->cameraX;
-	vars->mapX = (int)vars->posX;
-	vars->mapY = (int)vars->posY;
-	if (vars->rayDirX == 0)
-		vars->deltaDistX = 1e30;
+	vars->ray.x = vars->dir.x + vars->plane.x * vars->camerax;
+	vars->ray.y = vars->dir.y + vars->plane.y * vars->camerax;
+	vars->map.x = (int)vars->pos.x;
+	vars->map.y = (int)vars->pos.y;
+	if (vars->ray.x == 0)
+		vars->delta.x = 1e30;
 	else
-		vars->deltaDistX = fabs(1 / vars->rayDirX);
-	if (vars->rayDirY == 0)
-		vars->deltaDistY = 1e30;
+		vars->delta.x = fabs(1 / vars->ray.x);
+	if (vars->ray.y == 0)
+		vars->delta.y = 1e30;
 	else
-		vars->deltaDistY = fabs(1 / vars->rayDirY);
-	if (vars->rayDirX < 0)
+		vars->delta.y = fabs(1 / vars->ray.y);
+	if (vars->ray.x < 0)
 	{
-		vars->stepX = -1;
-		vars->sideDistX = (vars->posX - vars->mapX) * vars->deltaDistX;
+		vars->step.x = -1;
+		vars->side.x = (vars->pos.x - vars->map.x) * vars->delta.x;
 	}
 	else
 	{
-		vars->stepX = 1;
-		vars->sideDistX = (vars->mapX + 1.0 - vars->posX) * vars->deltaDistX;
+		vars->step.x = 1;
+		vars->side.x = (vars->map.x + 1.0 - vars->pos.x) * vars->delta.x;
 	}
 }
 
 void	raycast2(t_values *vars)
 {
-	if (vars->rayDirY < 0)
+	if (vars->ray.y < 0)
 	{
-		vars->stepY = -1;
-		vars->sideDistY = (vars->posY - vars->mapY) * vars->deltaDistY;
+		vars->step.y = -1;
+		vars->side.y = (vars->pos.y - vars->map.y) * vars->delta.y;
 	}
 	else
 	{
-		vars->stepY = 1;
-		vars->sideDistY = (vars->mapY + 1.0 - vars->posY) * vars->deltaDistY;
+		vars->step.y = 1;
+		vars->side.y = (vars->map.y + 1.0 - vars->pos.y) * vars->delta.y;
 	}
 }
 
@@ -85,60 +85,60 @@ void	raycast3(t_values *vars)
 	vars->hit = 0;
 	while (vars->hit == 0)
 	{
-		if (vars->sideDistX < vars->sideDistY)
+		if (vars->side.x < vars->side.y)
 		{
-			vars->sideDistX += vars->deltaDistX;
-			vars->mapX += vars->stepX;
-			vars->side = 0;
+			vars->side.x += vars->delta.x;
+			vars->map.x += vars->step.x;
+			vars->p_side = 0;
 		}
 		else
 		{
-			vars->sideDistY += vars->deltaDistY;
-			vars->mapY += vars->stepY;
-			vars->side = 1;
+			vars->side.y += vars->delta.y;
+			vars->map.y += vars->step.y;
+			vars->p_side = 1;
 		}
-		if (worldMaps[vars->mapX][vars->mapY] > 0)
+		if (worldMaps[vars->map.x][vars->map.y] > 0)
 			vars->hit = 1;
 	}
 }
 
 void	raycast4(t_values *vars)
 {
-	if (vars->side == 0)
-		vars->perpWallDist = (vars->sideDistX - vars->deltaDistX);
+	if (vars->p_side == 0)
+		vars->perpwalldist = (vars->side.x - vars->delta.x);
 	else
-		vars->perpWallDist = (vars->sideDistY - vars->deltaDistY);
-	vars->h = screenHeight;
-	vars->lineHeight = (int)(vars->h / vars->perpWallDist);
-	vars->drawStart = -vars->lineHeight / 2 + vars->h / 2;
-	if (vars->drawStart < 0)
-		vars->drawStart = 0;
-	vars->drawEnd = vars->lineHeight / 2 + vars->h / 2;
-	if (vars->drawEnd >= vars->h)
-		vars->drawEnd = vars->h - 1;
-	if (vars->side == 1 && vars->mapY > (vars->mapY - vars->stepY))
-		vars->texNum = 0;
-	else if (vars->side == 1 && vars->mapY < (vars->mapY - vars->stepY))
-		vars->texNum = 1;
-	else if (vars->side == 0 && vars->mapX < (vars->mapX - vars->stepX))
-		vars->texNum = 2;
-	else if (vars->side == 0 && vars->mapX > (vars->mapX - vars->stepX))
-		vars->texNum = 3;
-	if (vars->side == 0)
-		vars->wallX = vars->posY + vars->perpWallDist * vars->rayDirY;
+		vars->perpwalldist = (vars->side.y - vars->delta.y);
+	vars->h = SCREENHEIGHT;
+	vars->lineheight = (int)(vars->h / vars->perpwalldist);
+	vars->drawstart = -vars->lineheight / 2 + vars->h / 2;
+	if (vars->drawstart < 0)
+		vars->drawstart = 0;
+	vars->drawend = vars->lineheight / 2 + vars->h / 2;
+	if (vars->drawend >= vars->h)
+		vars->drawend = vars->h - 1;
+	if (vars->p_side == 1 && vars->map.y > (vars->map.y - vars->step.y))
+		vars->texnum = 0;
+	else if (vars->p_side == 1 && vars->map.y < (vars->map.y - vars->step.y))
+		vars->texnum = 1;
+	else if (vars->p_side == 0 && vars->map.x < (vars->map.x - vars->step.x))
+		vars->texnum = 2;
+	else if (vars->p_side == 0 && vars->map.x > (vars->map.x - vars->step.x))
+		vars->texnum = 3;
+	if (vars->p_side == 0)
+		vars->wallx = vars->pos.y + vars->perpwalldist * vars->ray.y;
 	else
-		vars->wallX = vars->posX + vars->perpWallDist * vars->rayDirX;
-	vars->wallX -= floor((vars->wallX));
+		vars->wallx = vars->pos.x + vars->perpwalldist * vars->ray.x;
+	vars->wallx -= floor((vars->wallx));
 }
 
 void	raycast5(t_values *vars)
 {
-	vars->texX = (int)(vars->wallX * (double)vars->height[vars->texNum]);
-	if (vars->side == 0 && vars->rayDirX > 0)
-		vars->texX = vars->width[vars->texNum] - vars->texX - 1;
-	if (vars->side == 1 && vars->rayDirY < 0)
-		vars->texX = vars->width[vars->texNum] - vars->texX - 1;
-	vars->step = 1.0 * vars->height[vars->texNum] / vars->lineHeight;
-	vars->texPos = (vars->drawStart - vars->h / 2 + vars->lineHeight / 2)
-		* vars->step;
+	vars->tex.x = (int)(vars->wallx * (double)vars->height[vars->texnum]);
+	if (vars->p_side == 0 && vars->ray.x > 0)
+		vars->tex.x = vars->width[vars->texnum] - vars->tex.x - 1;
+	if (vars->p_side == 1 && vars->ray.y < 0)
+		vars->tex.x = vars->width[vars->texnum] - vars->tex.x - 1;
+	vars->t_step = 1.0 * vars->height[vars->texnum] / vars->lineheight;
+	vars->texpos = (vars->drawstart - vars->h / 2 + vars->lineheight / 2)
+		* vars->t_step;
 }

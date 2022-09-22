@@ -6,13 +6,13 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/22 10:38:59 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/22 14:19:49 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int worldMap[mapWidth][mapHeight]=
+int worldMap[MAPWIDTH][MAPHEIGHT]=
 {
   {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
   {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
@@ -52,11 +52,11 @@ void	raycasting(t_values *vars)
 	double	w;
 	int		x;
 
-	w = screenWidth;
+	w = SCREENWIDTH;
 	x = 0;
 	while (x <= w)
 	{
-		vars->cameraX = 2 * x / w - 1;
+		vars->camerax = 2 * x / w - 1;
 		raycast1(vars);
 		raycast2(vars);
 		raycast3(vars);
@@ -67,25 +67,26 @@ void	raycasting(t_values *vars)
 	}
 }
 
-
 int	init(t_values *vars)
 {
-	vars->posX = 22;
-	vars->posY = 22;
-	vars->dirX = 0;
-	vars->dirY = 1;
-	vars->planeX = 0.66;
-	vars->planeY = 0;
+	vars->pos.x = 22;
+	vars->pos.y = 22;
+	vars->dir.x = 0;
+	vars->dir.y = 1;
+	vars->plane.x = 0.66;
+	vars->plane.y = 0;
 	vars->mlx_ptr = mlx_init();
 	if (vars->mlx_ptr == NULL)
 		return (1);
-	vars->win_ptr = mlx_new_window(vars->mlx_ptr, screenWidth, screenHeight, "Cub3D");
+	vars->win_ptr = mlx_new_window(vars->mlx_ptr, SCREENWIDTH,
+			SCREENHEIGHT, "Cub3D");
 	if (vars->win_ptr == NULL)
 		return (1);
-	vars->img_ptr = mlx_new_image(vars->mlx_ptr, screenWidth, screenHeight);
+	vars->img_ptr = mlx_new_image(vars->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
 	if (vars->img_ptr == NULL)
 		return (1);
-	vars->img = mlx_get_data_addr(vars->img_ptr, &vars->bits, &vars->line, &vars->end);
+	vars->img = mlx_get_data_addr(vars->img_ptr, &vars->bits,
+			&vars->line, &vars->end);
 	if (vars->img == NULL)
 		return (1);
 	return (0);
@@ -93,7 +94,7 @@ int	init(t_values *vars)
 
 int	main(void)
 {
-	t_values	vars;
+	t_values		vars;
 
 	if (init(&vars))
 		return (1);
@@ -106,7 +107,7 @@ int	main(void)
 }
 
 // ----At what side to look---
-// dirX=0 dirY=-1 planeX=-0.66 planeY=0
-// dirX=-1 dirY=0 planeX=0 planeY=0.66
-// dirX=1 dirY=0 planeX=0 planeY=-0.66
-// dirX=0 dirY=1 planeX=0.66 planeY=0
+// dir.x=0 dir.y=-1 plane.x=-0.66 plane.y=0
+// dir.x=-1 dir.y=0 plane.x=0 plane.y=0.66
+// dir.x=1 dir.y=0 plane.x=0 plane.y=-0.66
+// dir.x=0 dir.y=1 plane.x=0.66 plane.y=0
