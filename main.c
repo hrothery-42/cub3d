@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/21 16:16:36 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/22 10:38:59 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int	init(t_values *vars)
 {
 	vars->posX = 22;
 	vars->posY = 22;
-	vars->dirX = -1;
-	vars->dirY = 0;
-	vars->planeX = 0;
-	vars->planeY = 0.66;
+	vars->dirX = 0;
+	vars->dirY = 1;
+	vars->planeX = 0.66;
+	vars->planeY = 0;
 	vars->mlx_ptr = mlx_init();
 	if (vars->mlx_ptr == NULL)
 		return (1);
