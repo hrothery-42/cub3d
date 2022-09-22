@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/20 12:36:28 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:18:27 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 #include <stdlib.h>
 #include <math.h>
 #include "minilibx_opengl/mlx.h"
+
+#define mapWidth 24
+#define mapHeight 24
+#define screenWidth 800
+#define screenHeight 600
 
 typedef struct s_values
 {
@@ -58,39 +63,35 @@ typedef struct s_values
 	unsigned long int	color;
 	double				oldDirX;
 	double				oldPlaneX;
-	// unsigned long int 	buffer[][];
 	int					texNum;
 	double				wallX;
 	int					texX;
-	void				*tex1;
-	void				*tex2;
-	void				*tex3;
-	void				*tex4;
-	void				*tex5;
-	void				*tex6;
-	void				*tex7;
-	void				*tex8;
-	int					*width1;
-	int					*height1;
-	int					*width2;
-	int					*height2;
-	int					*width3;
-	int					*height3;
-	int					*width4;
-	int					*height4;
-	int					*width5;
-	int					*height5;
-	int					*width6;
-	int					*height6;
-	int					*width7;
-	int					*height7;
-	int					*width8;
-	int					*height8;
+	void				*tex[4];
+	void				*itex[4];
+	int					width[4];
+	int					height[4];
+	int					tbits[4];
+	int					tline[4];
+	int					tend[4];
 	double				step;
 	double				texPos;
 	int					texY;
 	
 }	t_values;
+
+void	raycast1(t_values *vars);
+void	raycast2(t_values *vars);
+void	raycast3(t_values *vars);
+void	raycast4(t_values *vars);
+void	raycast5(t_values *vars);
+int		keys(int key, t_values *vars);
+int		xclose(t_values *vars);
+void	textures(t_values *vars);
+int		test(t_values *vars);
+void	draw_fc(t_values *vars);
+void	drawwalls(int x, t_values *vars);
+void	raycasting(t_values *vars);
+
 
 
 #endif
