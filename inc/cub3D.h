@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:47:09 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 17:06:13 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/22 09:08:51 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include "structs.h"
 # include "../mlx/mlx.h"
 //only on Linux
-#  include <X11/X.h>
-#  include <X11/keysym.h>
+//#  include <X11/X.h>
+//#  include <X11/keysym.h>
 
 # include <fcntl.h> //open, close, read
 # include <stdio.h> //perror

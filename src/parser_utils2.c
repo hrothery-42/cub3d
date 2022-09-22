@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:29:11 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 17:04:40 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/22 11:53:24 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ bool	check_character(char c, t_values *vars, int i, int j)
 	{
 		vars->start_position++;
 		init_pos_and_dir(c, vars, i, j);
+		vars->map[i][j] = '0';
 		return (0);
 	}
 	ft_putstr_fd("Error!\nInvalid charcter on the map.\n", 2);
