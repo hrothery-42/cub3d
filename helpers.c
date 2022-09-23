@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:12:12 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/22 14:19:55 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:52:30 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,4 @@ int	test(t_values *vars)
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
 	mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
 	return (0);
-}
-
-void	textures(t_values *vars)
-{
-	vars->t_tex[0] = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/redbrick.xpm",
-			&vars->width[0], &vars->height[0]);
-	vars->itex[0] = mlx_get_data_addr(vars->t_tex[0], &vars->tbits[0],
-			&vars->tline[0], &vars->tend[0]);
-	vars->t_tex[1] = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/bluestone.xpm",
-			&vars->width[1], &vars->height[1]);
-	vars->itex[1] = mlx_get_data_addr(vars->t_tex[1], &vars->tbits[1],
-			&vars->tline[1], &vars->tend[1]);
-	vars->t_tex[2] = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/colorstone.xpm",
-			&vars->width[2], &vars->height[2]);
-	vars->itex[2] = mlx_get_data_addr(vars->t_tex[2],
-			&vars->tbits[2], &vars->tline[2], &vars->tend[2]);
-	vars->t_tex[3] = mlx_xpm_file_to_image(vars->mlx_ptr, "pics/wood.xpm",
-			&vars->width[3], &vars->height[3]);
-	vars->itex[3] = mlx_get_data_addr(vars->t_tex[3],
-			&vars->tbits[3], &vars->tline[3], &vars->tend[3]);
 }
