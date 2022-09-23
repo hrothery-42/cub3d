@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 12:23:19 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:30:11 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	check_character(char c, t_values *vars, int i, int j)
 		vars->map[i][j] = '0';
 		return (0);
 	}
-	ft_putstr_fd("Error!\nInvalid charcter on the map.\n", 2);
+	ft_putstr_fd("Error!\nInvalid character on the map.\n", 2);
 	return (1);
 }
 

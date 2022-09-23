@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:27:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 12:23:38 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:22:56 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ bool	init_t_values(char *argv, t_values *vars)
 	{
 		line = get_next_line(fd);
 		replace_newline(line);
-		sort_data(vars, line, &count, &ret);
+		if (!ret)
+			sort_data(vars, line, &count, &ret);
 		free(line);
 	}
 	close(fd);
-	if (ret == 1)
-		ft_putstr_fd("Error!\nFalse identifier or input.\n", 2);
 	return (ret);
 }
 

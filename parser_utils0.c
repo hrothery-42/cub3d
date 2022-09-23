@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 12:23:14 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:27:10 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ bool	init_value(char *line, t_values *vars)
 
 	tmp = ft_split(line, ' ');
 	if (!tmp[1] || tmp[2])
+	{
+		ft_putstr_fd("Error!\nMissing or extra information.\n", 2);
 		ret = 1;
+	}
 	else if (!ft_strcmp(tmp[0], "NO"))
 		ret = save_tex(tmp[1], vars, NORTH);
 	else if (!ft_strcmp(tmp[0], "SO"))

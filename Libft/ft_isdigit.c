@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:58:07 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:16:45 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:32:09 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ int	ft_strisdigit(char *s)
 	}
 	return (1);
 }
-
