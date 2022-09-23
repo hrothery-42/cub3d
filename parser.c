@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:27:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 11:48:17 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:23:38 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	ft_count(int fd, t_values *vars)
 		else if (map && line)
 		{
 			vars->nr_rows++;
-			if (ft_strlen(line) > vars->nr_columns)
+			if ((int)ft_strlen(line) > vars->nr_columns)
 				vars->nr_columns = ft_strlen(line);
 		}
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:52:09 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:48:19 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:15:53 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	raycast3(t_values *vars)
 			vars->move.y += vars->step.y;
 			vars->p_side = 1;
 		}
-		if (vars->map[vars->move.x][vars->move.y] > 0)
+		if (vars->map[vars->move.x][vars->move.y] == '1')
 			vars->hit = 1;
 	}
 }

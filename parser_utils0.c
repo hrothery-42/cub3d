@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 11:47:10 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:23:14 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ bool	init_value(char *line, t_values *vars)
 {
 	char	**tmp;
 	bool	ret;
-	int		color;
 
 	tmp = ft_split(line, ' ');
 	if (!tmp[1] || tmp[2])

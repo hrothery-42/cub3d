@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bvarlamo <bvarlamo@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 09:41:29 by bvarlamo          #+#    #+#              #
-#    Updated: 2022/09/21 16:18:01 by bvarlamo         ###   ########.fr        #
+#    Updated: 2022/09/23 12:05:32 by bvarlamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-cub3D=	main.c keys.c raycastingHelpers.c helpers.c\
+cub3D=	main.c keys.c raycastinghelpers.c helpers.c init_pos.c parser_utils0.c parser_utils1.c parser_utils2.c parser.c space_check.c wall_check.c \
 
 NAME	=	cub3
 

@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:54:42 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:47:06 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:41:17 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	stepleft(t_values *vars)
 {
-	if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.x * 0.65)])
+	if (vars->map[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.x * 0.65)] == '0')
 			vars->pos.y += vars->dir.x * 0.65;
-	if (!vars->map[(int)(vars->pos.x + (-vars->dir.y * 0.65))][(int)(vars->pos.y)])
+	if (vars->map[(int)(vars->pos.x + (-vars->dir.y * 0.65))][(int)(vars->pos.y)] == '0')
 		vars->pos.x += -vars->dir.y * 0.65;
 	return (0);
 }
 
 int	stepright(t_values *vars)
 {
-	if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.x * 0.65)])
+	if (vars->map[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.x * 0.65)] == '0')
 			vars->pos.y -= vars->dir.x * 0.65;
-	if (!vars->map[(int)(vars->pos.x - (-vars->dir.y * 0.65))][(int)(vars->pos.y)])
+	if (vars->map[(int)(vars->pos.x - (-vars->dir.y * 0.65))][(int)(vars->pos.y)] == '0')
 		vars->pos.x -= -vars->dir.y * 0.65;
 	return (0);
 }
@@ -58,16 +58,16 @@ int	keys(int key, t_values *vars)
 		xclose(vars);
 	else if (key == 13)
 	{
-		if (!vars->map[(int)(vars->pos.x + vars->dir.x * 0.65)][(int)(vars->pos.y)])
+		if (vars->map[(int)(vars->pos.x + vars->dir.x * 0.65)][(int)(vars->pos.y)] == '0')
 			vars->pos.x += vars->dir.x * 0.65;
-		if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.y * 0.65)])
+		if (vars->map[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.y * 0.65)] == '0')
 			vars->pos.y += vars->dir.y * 0.65;
 	}
 	else if (key == 1)
 	{
-		if (!vars->map[(int)(vars->pos.x - vars->dir.x * 0.65)][(int)(vars->pos.y)])
+		if (vars->map[(int)(vars->pos.x - vars->dir.x * 0.65)][(int)(vars->pos.y)] == '0')
 			vars->pos.x -= vars->dir.x * 0.65;
-		if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.y * 0.65)])
+		if (vars->map[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.y * 0.65)] == '0')
 			vars->pos.y -= vars->dir.y * 0.65;
 	}
 	else if (key == 0)

@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:43:13 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:22:58 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # include "minilibx_opengl/mlx.h"
 # include <fcntl.h>
 # include <stdbool.h>
+# include "Libft/libft.h"
 
-# define MAPWIDTH 24
-# define MAPHEIGHT 24
 # define SCREENWIDTH 800
 # define SCREENHEIGHT 600
 
