@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:01:32 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:43:13 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <math.h>
 # include "minilibx_opengl/mlx.h"
+# include <fcntl.h>
+# include <stdbool.h>
 
 # define MAPWIDTH 24
 # define MAPHEIGHT 24
@@ -65,7 +67,7 @@ typedef struct s_values
 	t_coordinates		plane;
 	double				camerax;
 	t_coordinates		ray;
-	t_icoordinates		map;
+	t_icoordinates		move;
 	t_coordinates		side;
 	t_coordinates		delta;
 	double				perpwalldist;
