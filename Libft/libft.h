@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 20:37:07 by bvarlamo          #+#    #+#             */
-/*   Updated: 2021/12/13 10:38:29 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:27:03 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFFER_SIZE 42
 
 typedef struct s_list
 {
@@ -35,12 +36,16 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char *haysstack, const char *needle, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t size);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_atoi(const char *str);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
+int		ft_strisdigit(char *s);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_isspace(int c);
+int		is_only_whitespaces(char *line);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t count, size_t eltsize);
@@ -66,5 +71,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_hextoi(char	*hex);
+void	ft_double_free(char **array);
+char	*get_next_line(int fd);
+int		is_newline(char *s);
+char	*ft_strjoin_gnl(char *s1, char*s2);
 
 #endif /* Libft_h */

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 19:58:07 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:16:45 by hrothery         ###   ########.fr       */
+/*   Created: 2022/09/23 11:17:30 by hrothery          #+#    #+#             */
+/*   Updated: 2022/09/23 11:17:57 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int	ft_isspace(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (c == ' ' || c == '\f' || c == '\n'
+		|| c == '\r' || c == '\t' || c == '\v')
 		return (1);
 	return (0);
 }
 
-int	ft_strisdigit(char *s)
+int	is_only_whitespaces(char *line)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
+	if (!line)
 		return (1);
-	while (s[i])
+	while (line[i])
 	{
-		if (!ft_isdigit(s[i]))
+		if (!ft_isspace(line[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
-

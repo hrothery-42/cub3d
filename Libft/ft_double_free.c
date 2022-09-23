@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_double_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 19:58:07 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 11:16:45 by hrothery         ###   ########.fr       */
+/*   Created: 2022/09/23 11:14:46 by hrothery          #+#    #+#             */
+/*   Updated: 2022/09/23 11:27:40 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+#include <stdlib.h>
 
-int	ft_strisdigit(char *s)
+void	ft_double_free(char **array)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (1);
-	while (s[i])
-	{
-		if (!ft_isdigit(s[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (!array)
+		return ;
+	while (array[i])
+		free(array[i++]);
+	free(array);
 }
-
