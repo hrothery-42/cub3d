@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 10:25:26 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:47:08 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ bool	check_file(int argc, char *argv)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_values		vars;
 

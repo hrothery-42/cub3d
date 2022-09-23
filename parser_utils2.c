@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 10:57:45 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:48:14 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 bool	save_tex(char *pattern, t_values *vars, int i)
 {
-	if (!vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, pattern,
-		&vars->width[i], &vars->height[i]))
+	if (!(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, pattern,
+		&vars->width[i], &vars->height[i])))
 	{
 		ft_putstr_fd("Error!\nProblem connecting file with minilibx. Check file path.\n", 2);
 		return (1);
 	}
-	if (!vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
-		&vars->tline[i], &vars->tend[i]))
+	if (!(vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
+		&vars->tline[i], &vars->tend[i])))
 	{
 		ft_putstr_fd("Error!\nProblem connecting file with minilibx.\n", 2);
 		return (1);

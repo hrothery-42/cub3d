@@ -6,54 +6,26 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:54:42 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/22 14:23:51 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:47:06 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	worldMapz[MAPWIDTH][MAPHEIGHT]=
-{
-  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
-  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
-  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
-  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
-  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
-  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
-  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
-  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
-};
-
 int	stepleft(t_values *vars)
 {
-	if (!worldMapz[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.x * 0.65)])
+	if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.x * 0.65)])
 			vars->pos.y += vars->dir.x * 0.65;
-	if (!worldMapz[(int)(vars->pos.x + (-vars->dir.y * 0.65))][(int)(vars->pos.y)])
+	if (!vars->map[(int)(vars->pos.x + (-vars->dir.y * 0.65))][(int)(vars->pos.y)])
 		vars->pos.x += -vars->dir.y * 0.65;
 	return (0);
 }
 
 int	stepright(t_values *vars)
 {
-	if (!worldMapz[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.x * 0.65)])
+	if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.x * 0.65)])
 			vars->pos.y -= vars->dir.x * 0.65;
-	if (!worldMapz[(int)(vars->pos.x - (-vars->dir.y * 0.65))][(int)(vars->pos.y)])
+	if (!vars->map[(int)(vars->pos.x - (-vars->dir.y * 0.65))][(int)(vars->pos.y)])
 		vars->pos.x -= -vars->dir.y * 0.65;
 	return (0);
 }
@@ -86,16 +58,16 @@ int	keys(int key, t_values *vars)
 		xclose(vars);
 	else if (key == 13)
 	{
-		if (!worldMapz[(int)(vars->pos.x + vars->dir.x * 0.65)][(int)(vars->pos.y)])
+		if (!vars->map[(int)(vars->pos.x + vars->dir.x * 0.65)][(int)(vars->pos.y)])
 			vars->pos.x += vars->dir.x * 0.65;
-		if (!worldMapz[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.y * 0.65)])
+		if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y + vars->dir.y * 0.65)])
 			vars->pos.y += vars->dir.y * 0.65;
 	}
 	else if (key == 1)
 	{
-		if (!worldMapz[(int)(vars->pos.x - vars->dir.x * 0.65)][(int)(vars->pos.y)])
+		if (!vars->map[(int)(vars->pos.x - vars->dir.x * 0.65)][(int)(vars->pos.y)])
 			vars->pos.x -= vars->dir.x * 0.65;
-		if (!worldMapz[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.y * 0.65)])
+		if (!vars->map[(int)(vars->pos.x)][(int)(vars->pos.y - vars->dir.y * 0.65)])
 			vars->pos.y -= vars->dir.y * 0.65;
 	}
 	else if (key == 0)
