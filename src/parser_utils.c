@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 10:33:28 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/21 09:00:38 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 09:54:30 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,23 @@ bool	init_value(char *line, t_values *vars)
 {
 	char	**tmp;
 	bool	ret;
+	int		color;
 
 	tmp = ft_split(line, ' ');
 	if (!tmp[1] || tmp[2])
 		ret = 1;
 	else if (!ft_strcmp(tmp[0], "NO"))
-		ret = save_fd(tmp[1], &vars->fd_no);
+		ret = save_tex(tmp[1], vars, 0);
 	else if (!ft_strcmp(tmp[0], "SO"))
-		ret = save_fd(tmp[1], &vars->fd_so);
+		ret = save_tex(tmp[1], vars, 1);
 	else if (!ft_strcmp(tmp[0], "WE"))
-		ret = save_fd(tmp[1], &vars->fd_we);
+		ret = save_tex(tmp[1], vars, 2);
 	else if (!ft_strcmp(tmp[0], "EA"))
-		ret = save_fd(tmp[1], &vars->fd_ea);
+		ret = save_tex(tmp[1], vars, 3);
 	else if (!ft_strcmp(tmp[0], "F"))
-		ret = save_color(tmp[1], &vars->floor);
+		ret = get_color(tmp[1], vars, 0);
 	else if (!ft_strcmp(tmp[0], "C"))
-		ret = save_color(tmp[1], &vars->ceiling);
+		ret = get_color(tmp[1], vars, 1);
 	else
 		ret = 1;
 	ft_double_free(tmp);
