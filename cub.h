@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 12:22:58 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:53:06 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,9 @@ bool	left_border(int i, int j, t_values *vars);
 bool	right_border(int i, int j, t_values *vars);
 bool	top_border(int i, int j, t_values *vars);
 bool	bottom_border(int i, int j, t_values *vars);
+
+//stepforward.c
+int		stepforward(t_values *vars);
 
 //wall_check.c
 bool	left_wall(int i, int j, t_values *vars);

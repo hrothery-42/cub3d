@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 12:23:36 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:43:55 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 bool	save_tex(char *pattern, t_values *vars, int i)
 {
-	if (!(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, pattern,
-		&vars->width[i], &vars->height[i])))
+	(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, pattern,
+				&vars->width[i], &vars->height[i]));
+	if (!vars->t_tex[i])
 	{
-		ft_putstr_fd("Error!\nProblem connecting file with minilibx. Check file path.\n", 2);
+		ft_putstr_fd("Error!\nCheck file path for wall pattern.\n", 2);
 		return (1);
 	}
-	if (!(vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
-		&vars->tline[i], &vars->tend[i])))
+	(vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
+				&vars->tline[i], &vars->tend[i]));
+	if (!vars->itex[i])
 	{
 		ft_putstr_fd("Error!\nProblem connecting file with minilibx.\n", 2);
 		return (1);
@@ -36,7 +38,6 @@ int	create_trgb(int t, int r, int g, int b)
 	trgb = t << 24 | r << 16 | g << 8 | b;
 	return (trgb);
 }
-
 
 void	sort_data(t_values *vars, char *line, int *count, bool *ret)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_pos.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:42:24 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 12:23:03 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:38:39 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_n(t_values *vars)
 {
-	vars->dir.x = 0; 
+	vars->dir.x = 0;
 	vars->dir.y = 1;
 	vars->plane.x = 0.66;
 	vars->plane.y = 0;
