@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 10:55:26 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:01:32 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # define MAPHEIGHT 24
 # define SCREENWIDTH 800
 # define SCREENHEIGHT 600
+
+# define FLOOR 0
+# define CEILING 1
+# define NORTH 0
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
 
 typedef struct s_color
 {

@@ -6,13 +6,12 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 10:45:17 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:57:45 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-//NO = 0, SO = 1, WE = 2, EA = 3
 bool	save_tex(char *pattern, t_values *vars, int i)
 {
 	if (!vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, pattern,

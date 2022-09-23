@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 10:31:48 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:03:47 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ bool	init_value(char *line, t_values *vars)
 	if (!tmp[1] || tmp[2])
 		ret = 1;
 	else if (!ft_strcmp(tmp[0], "NO"))
-		ret = save_tex(tmp[1], vars, 0);
+		ret = save_tex(tmp[1], vars, NORTH);
 	else if (!ft_strcmp(tmp[0], "SO"))
-		ret = save_tex(tmp[1], vars, 1);
+		ret = save_tex(tmp[1], vars, SOUTH);
 	else if (!ft_strcmp(tmp[0], "WE"))
-		ret = save_tex(tmp[1], vars, 2);
+		ret = save_tex(tmp[1], vars, WEST);
 	else if (!ft_strcmp(tmp[0], "EA"))
-		ret = save_tex(tmp[1], vars, 3);
+		ret = save_tex(tmp[1], vars, EAST);
 	else if (!ft_strcmp(tmp[0], "F"))
-		ret = get_color(tmp[1], vars, 0);
+		ret = get_color(tmp[1], vars, FLOOR);
 	else if (!ft_strcmp(tmp[0], "C"))
-		ret = get_color(tmp[1], vars, 1);
+		ret = get_color(tmp[1], vars, CEILING);
 	else
 		ret = 1;
 	ft_double_free(tmp);

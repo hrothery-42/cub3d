@@ -6,13 +6,12 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 10:38:33 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:03:07 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-//0 is Floor, 1 is ceiling
 int	get_color(char *color, t_values *vars, int i)
 {
 	char	**tmp;
@@ -35,9 +34,9 @@ int	get_color(char *color, t_values *vars, int i)
 	ft_double_free(tmp);
 	if (ret == 1)
 		ft_putstr_fd("Error!\nColor value(s): floor and/or ceiling.\n", 2);
-	else if (!ret && i == 0)
+	else if (!ret && i == FLOOR)
 		vars->floor = create_trgb(0, l.red, l.green, l.blue);
-	else if (!ret && i == 1)
+	else if (!ret && i == CEILING)
 		vars->ceiling = create_trgb(0, l.red, l.green, l.blue);
 	return (ret);
 }
