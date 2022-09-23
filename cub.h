@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/22 13:46:40 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/23 10:22:58 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@
 # define SCREENWIDTH 800
 # define SCREENHEIGHT 600
 
-typedef struct s_cordinates
+typedef struct s_coordinates
 {
 	double	x;
 	double	y;
-}	t_cordinates;
+}	t_coordinates;
 
-typedef struct s_icordinates
+typedef struct s_icoordinates
 {
 	int	x;
 	int	y;
-}	t_icordinates;
+}	t_icoordinates;
 
 typedef struct s_values
 {
@@ -46,16 +46,16 @@ typedef struct s_values
 	int					bits;
 	int					line;
 	int					end;
-	t_cordinates		pos;
-	t_cordinates		dir;
-	t_cordinates		plane;
+	t_coordinates		pos;
+	t_coordinates		dir;
+	t_coordinates		plane;
 	double				camerax;
-	t_cordinates		ray;
-	t_icordinates		map;
-	t_cordinates		side;
-	t_cordinates		delta;
+	t_coordinates		ray;
+	t_icoordinates		map;
+	t_coordinates		side;
+	t_coordinates		delta;
 	double				perpwalldist;
-	t_icordinates		step;
+	t_icoordinates		step;
 	int					hit;
 	int					p_side;
 	int					lineheight;
@@ -67,7 +67,7 @@ typedef struct s_values
 	double				oldplanex;
 	int					texnum;
 	double				wallx;
-	t_icordinates		tex;
+	t_icoordinates		tex;
 	void				*t_tex[4];
 	void				*itex[4];
 	int					width[4];
@@ -77,6 +77,7 @@ typedef struct s_values
 	int					tend[4];
 	double				t_step;
 	double				texpos;
+	char				**map;
 
 }	t_values;
 
