@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:54:42 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 15:51:03 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:11:07 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ int	turnright(t_values *vars)
 
 int	keys(int key, t_values *vars)
 {
-	if (key == 53)
+	if (key == EXIT_KEY)
 		xclose(vars);
-	else if (key == 13)
+	else if (key == W_KEY)
 		stepforward(vars);
-	else if (key == 1)
+	else if (key == S_KEY)
 	{
 		if (vars->map[(int)(vars->pos.x - vars->dir.x
 				* 0.65)][(int)(vars->pos.y)] == '0')
@@ -71,13 +71,13 @@ int	keys(int key, t_values *vars)
 				- vars->dir.y * 0.65)] == '0')
 			vars->pos.y -= vars->dir.y * 0.65;
 	}
-	else if (key == 0)
+	else if (key == A_KEY)
 		stepleft(vars);
-	else if (key == 2)
+	else if (key == D_KEY)
 		stepright(vars);
-	else if (key == 123)
+	else if (key == LEFT_ARROW)
 		turnleft(vars);
-	else if (key == 124)
+	else if (key == RIGHT_ARROW)
 		turnright(vars);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 15:41:09 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:20:06 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	get_color(char *color, t_values *vars, int i)
 	l.red = ft_atoi(tmp[0]);
 	l.green = ft_atoi(tmp[1]);
 	l.blue = ft_atoi(tmp[2]);
-	if (l.red < 0 | l.red > 255 || l.green < 0 || l.green > 255 \
+	if (l.red < 0 || l.red > 255 || l.green < 0 || l.green > 255 \
 	|| l.blue < 0 || l.blue > 255)
 		ret = 1;
 	ft_double_free(tmp);
