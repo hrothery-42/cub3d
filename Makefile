@@ -6,7 +6,7 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 09:41:29 by bvarlamo          #+#    #+#              #
-#    Updated: 2022/09/25 12:44:14 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/25 13:28:59 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,18 +42,28 @@ ${NAME}:	${cub3DO}
 		make -C ${minilbx}
 		${CC} ${CFLAGS} ${cub3DO} $(INCLUDES) $(FRAMEWORKS) -o ${NAME}
 
+clean :
+	make clean -C ${lib}
+	$(RM) ${cub3DO}
+
+fclean :	clean
+	$(RM) $(NAME)
+	make fclean -C {lib}
+	make clean -C ${minilbx}
+
 endif
 
 ifeq ($(shell uname), Linux)
 
+mlx = ./mlx
+
 $(NAME):	${cub3DO}
 	make -C ${lib}
+	make -C ${mlx}
 	$(CC) $(cub3DO) -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz $(CFLAGS) Libft/libft.a -o $(NAME)
 
 %o: %c 
 	$(CC) $(CFLAGS) -I/usr/include -Imlx -03 -c $< -o $@
-
-endif
 
 clean :
 	make clean -C ${lib}
@@ -61,9 +71,9 @@ clean :
 
 fclean :	clean
 	$(RM) $(NAME)
-	$(RM) $(cub3DO)
-	make clean -C ${lib}
+	make clean -C ${mlx}
 	make fclean -C ${lib}
-	make clean -C ${minilbx}
+
+endif
 
 re :		fclean all
