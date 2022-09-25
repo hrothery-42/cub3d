@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 09:44:24 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/25 13:04:13 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:20:36 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #  define EXIT_KEY 65307
 #  define LEFT_ARROW 65361
 #  define RIGHT_ARROW 65363
-
 # endif
 
 # ifdef __APPLE__
@@ -34,8 +33,6 @@
 #  define EXIT_KEY 53
 #  define LEFT_ARROW 123
 #  define RIGHT_ARROW 123
-
 # endif
-
 
 #endif
