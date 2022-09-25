@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/25 14:24:58 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:16:42 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,28 @@ bool	save_tex(char *pattern, t_values *vars, int i)
 bool	textures(t_values *vars)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (i < 4)
 	{
 		(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, vars->pattern[i],
 					&vars->width[i], &vars->height[i]));
 		if (!vars->t_tex[i])
 		{
+			while (j < i)
+				mlx_destroy_image(vars->mlx_ptr, vars->t_tex[j++]);
 			ft_putstr_fd("Error!\nCheck file path for wall pattern.\n", 2);
 			return (1);
 		}
 		(vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
 					&vars->tline[i], &vars->tend[i]));
-		if (!vars->itex[i])
+		if (!vars->itex[i++])
 		{
 			ft_putstr_fd("Error!\nProblem connecting file with minilibx.\n", 2);
 			return (1);
 		}
-		i++;
 	}
 	return (0);
 }
