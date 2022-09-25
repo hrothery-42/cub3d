@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/25 13:05:57 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:00:59 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_values
 	int					texnum;
 	double				wallx;
 	t_icoordinates		tex;
+	char				*pattern[4];
 	void				*t_tex[4];
 	void				*itex[4];
 	int					width[4];
@@ -105,6 +106,10 @@ typedef struct s_values
 	int					ceiling;
 
 }	t_values;
+
+//free.c
+bool	free_everything(t_values *vars);
+bool	free_map(t_values *vars);
 
 //helpers.c
 void	drawwalls(int x, t_values *vars);
@@ -137,6 +142,7 @@ bool	check_map(t_values *vars);
 bool	save_tex(char *pattern, t_values *vars, int i);
 int		create_trgb(int t, int r, int g, int b);
 void	sort_data(t_values *vars, char *line, int *count, bool *ret);
+bool	textures(t_values *vars);
 
 //parser.c
 int		parse_input(char *argv, t_values *vars);

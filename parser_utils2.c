@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 15:43:55 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:24:58 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,39 @@
 
 bool	save_tex(char *pattern, t_values *vars, int i)
 {
-	(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, pattern,
-				&vars->width[i], &vars->height[i]));
-	if (!vars->t_tex[i])
+	vars->pattern[i] = malloc(sizeof(char) * (ft_strlen(pattern) + 1));
+	if (!vars->pattern[i])
 	{
-		ft_putstr_fd("Error!\nCheck file path for wall pattern.\n", 2);
-		return (1);
+		ft_putstr_fd("Error!\nMemory allocation failed.\n", 2);
+		free_everything(vars);
+		exit(0);
 	}
-	(vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
-				&vars->tline[i], &vars->tend[i]));
-	if (!vars->itex[i])
+	ft_strlcpy(vars->pattern[i], pattern, ft_strlen(pattern) + 1);
+	return (0);
+}
+
+bool	textures(t_values *vars)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
 	{
-		ft_putstr_fd("Error!\nProblem connecting file with minilibx.\n", 2);
-		return (1);
+		(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, vars->pattern[i],
+					&vars->width[i], &vars->height[i]));
+		if (!vars->t_tex[i])
+		{
+			ft_putstr_fd("Error!\nCheck file path for wall pattern.\n", 2);
+			return (1);
+		}
+		(vars->itex[i] = mlx_get_data_addr(vars->t_tex[i], &vars->tbits[i],
+					&vars->tline[i], &vars->tend[i]));
+		if (!vars->itex[i])
+		{
+			ft_putstr_fd("Error!\nProblem connecting file with minilibx.\n", 2);
+			return (1);
+		}
+		i++;
 	}
 	return (0);
 }
