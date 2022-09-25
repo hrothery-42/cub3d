@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:12:12 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/23 14:59:35 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:37:29 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,15 @@ void	draw_fc(t_values *vars)
 
 int	test(t_values *vars)
 {
+	void	*old_img;
+
+	old_img = vars->img_ptr;
 	vars->img_ptr = mlx_new_image(vars->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
 	vars->img = mlx_get_data_addr(vars->img_ptr, &vars->bits, &vars->line,
 			&vars->end);
 	draw_fc(vars);
 	raycasting(vars);
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
-	mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
+	mlx_destroy_image(vars->mlx_ptr, old_img);
 	return (0);
 }
