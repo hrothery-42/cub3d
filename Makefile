@@ -6,7 +6,7 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 09:41:29 by bvarlamo          #+#    #+#              #
-#    Updated: 2022/09/25 14:01:14 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/25 15:19:04 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ cub3D=	main.c keys.c raycastinghelpers.c helpers.c init_pos.c parser_utils0.c \
 		parser_utils1.c parser_utils2.c parser.c space_check.c wall_check.c \
 		stepforward.c free.c \
 
-NAME	=	cub3
+NAME	=	cub3D
 
 CC	=	gcc
 
