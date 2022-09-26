@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:27:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/26 11:18:04 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:37:27 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	allocate_map(t_values *vars)
 	vars->map = malloc(sizeof(char *) * (vars->nr_rows + 1));
 	if (!vars->map)
 	{
-		ft_putstr_fd("Error!\nMemory allocation failed.\n", 2);
+		ft_putstr_fd("Error!\nMemory allocation failed\n", 2);
 		exit(0);
 	}
 	i = 0;
@@ -51,7 +51,7 @@ void	allocate_map(t_values *vars)
 		vars->map[i] = ft_calloc(vars->nr_columns + 1, sizeof(char));
 		if (!vars->map[i])
 		{
-			ft_putstr_fd("Error!\nMemory allocation failed.\n", 2);
+			ft_putstr_fd("Error!\nMemory allocation failed\n", 2);
 			ft_double_free(vars->map);
 			exit(0);
 		}
@@ -98,7 +98,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd("Error!\nCannot open file.\n", 2);
+		ft_putstr_fd("Error!\nFile can't be opened.\n", 2);
 		exit(0);
 	}
 	ft_count(fd, vars);
@@ -108,7 +108,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	{
 		if (vars->nswefc[i] != 1)
 		{
-			ft_putstr_fd("Error!\nFile: missing/invalid identifiers.\n", 2);
+			ft_putstr_fd("Error!\nMissing/ duplicate/ false identifiers.\n", 2);
 			exit(0);
 		}
 		i++;
@@ -127,7 +127,6 @@ int	parse_input(char *argv, t_values *vars)
 	allocate_map(vars);
 	if (init_t_values(argv, vars) || check_map(vars))
 	{
-		ft_putstr_fd("Check the file content.\n", 2);
 		return (1);
 	}
 	return (0);

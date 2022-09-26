@@ -6,11 +6,27 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/25 15:16:42 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:34:32 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+int	count_commas(char *s)
+{
+	int	i;
+	int	commas;
+
+	commas = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == ',')
+			commas++;
+		i++;
+	}
+	return (commas);
+}
 
 bool	save_tex(char *pattern, t_values *vars, int i)
 {

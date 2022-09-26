@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/26 11:07:59 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:38:32 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_color(char *color, t_values *vars, int i)
 	t_color	l;
 
 	tmp = ft_split(color, ',');
-	if (!tmp[2] || tmp[3])
+	if (!tmp[2] || tmp[3] || count_commas(color) != 2)
 		return (color_err(tmp));
 	if (!ft_strisdigit(tmp[0]) || !ft_strisdigit(tmp[1]) \
 	|| !ft_strisdigit(tmp[2]))
@@ -48,7 +48,7 @@ bool	check_character(char c, t_values *vars, int i, int j)
 		vars->map[i][j] = '0';
 		return (0);
 	}
-	ft_putstr_fd("Error!\nInvalid character on the map.\n", 2);
+	ft_putstr_fd("Error!\nFalse characater on the map.\n", 2);
 	return (1);
 }
 
@@ -111,7 +111,7 @@ bool	check_map(t_values *vars)
 	}
 	if (vars->nr_start_pos != 1)
 	{
-		ft_putstr_fd("Error!\n Wrong number of starting positions.\n", 2);
+		ft_putstr_fd("Error!\nWrong number of starting positions.\n", 2);
 		return (1);
 	}
 	return (0);

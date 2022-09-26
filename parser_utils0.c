@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/26 10:56:24 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:38:58 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	init_value(char *line, t_values *vars)
 	tmp = ft_split(line, ' ');
 	if (!tmp[1] || tmp[2])
 	{
-		ft_putstr_fd("Error!\nMissing or extra information.\n", 2);
+		ft_putstr_fd("Error!\nInvalid data.\n", 2);
 		ret = 1;
 	}
 	else if (!ft_strcmp(tmp[0], "NO"))
