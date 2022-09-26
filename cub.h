@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/26 11:43:42 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:06:28 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 
 # define SCREENWIDTH 800
 # define SCREENHEIGHT 600
+# define TURN 0.05
+# define STEP_INTERVAL 0.3
 
 # define FLOOR 0
 # define CEILING 1
