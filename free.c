@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:56:38 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/25 15:00:14 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:06:20 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,11 @@ bool	free_everything(t_values *vars)
 	free(vars->mlx_ptr);
 	return (1);
 }
+
+bool	color_err(char **tmp)
+{
+	ft_double_free(tmp);
+	ft_putstr_fd("Error!\nColor value(s): floor and/or ceiling.\n", 2);
+	return (1);
+}
+

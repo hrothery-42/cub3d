@@ -2,8 +2,8 @@ WE ./pics/bluestone.xpm
 EA ./pics/colorstone.xpm
 SO ./pics/redbrick.xpm
 NO ./pics/wood.xpm
-C 255,255,255
-F 255,255,0
+C 255,255,
+F 255,255,0 
 
                                          11111
                                         11000111111111

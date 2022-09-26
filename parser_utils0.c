@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/23 15:27:10 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:56:24 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	first_char(char *line)
 		return ('\0');
 	while (line[i] != '\0')
 	{
-		if (line[i] != ' ')
+		if (!ft_isspace(line[i]))
 			return (line[i]);
 		i++;
 	}

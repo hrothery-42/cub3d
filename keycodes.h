@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 09:44:24 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/25 13:20:36 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:50:33 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #  define S_KEY 1
 #  define EXIT_KEY 53
 #  define LEFT_ARROW 123
-#  define RIGHT_ARROW 123
+#  define RIGHT_ARROW 124
 # endif
 
 #endif

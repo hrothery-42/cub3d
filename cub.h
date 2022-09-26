@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/26 10:32:58 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:06:51 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_values
 bool	free_everything(t_values *vars);
 bool	free_map(t_values *vars);
 bool	free_paths(t_values *vars);
+bool	color_err(char **tmp);
 
 //helpers.c
 void	drawwalls(int x, t_values *vars);
