@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/26 11:15:17 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:43:10 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ bool	check_file(int argc, char *argv)
 	return (0);
 }
 
+//mlx_key_hook(vars.win_ptr, keys, &vars); //Linux
 int	main(int argc, char **argv)
 {
 	t_values		vars;
@@ -93,7 +94,6 @@ int	main(int argc, char **argv)
 	if (textures(&vars))
 		return (free_everything(&vars));
 	mlx_hook(vars.win_ptr, 2, 0, keys, &vars);
-	//mlx_key_hook(vars.win_ptr, keys, &vars); //Linux
 	mlx_hook(vars.win_ptr, 17, 0, xclose, &vars);
 	mlx_loop_hook(vars.mlx_ptr, test, &vars);
 	mlx_loop(vars.mlx_ptr);
