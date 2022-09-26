@@ -6,7 +6,7 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 09:41:29 by bvarlamo          #+#    #+#              #
-#    Updated: 2022/09/25 15:19:04 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/26 10:35:49 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ clean :
 
 fclean :	clean
 	$(RM) $(NAME)
-	make fclean -C {lib}
+	$(RM) Libft/libft.a
 	make clean -C ${minilbx}
 
 endif

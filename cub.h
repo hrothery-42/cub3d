@@ -6,23 +6,23 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/25 14:45:27 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:32:58 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 //only on Linux
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include "mlx/mlx.h"
+//# include <X11/X.h>
+//# include <X11/keysym.h>
+//# include "mlx/mlx.h"
 # include "keycodes.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <sys/time.h>
 # include <stdlib.h>
 # include <math.h>
-//# include "minilibx_opengl/mlx.h"
+# include "minilibx_opengl/mlx.h"
 # include <fcntl.h>
 # include <stdbool.h>
 # include "Libft/libft.h"
