@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:39:15 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:48:44 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_character(char c, t_values *vars, int i, int j)
 {
-	if (c == '1' || c == '0' || ft_isspace(c) || c == '\0')
+	if (c == '1' || c == '0' || ft_isspace(c) || c == '\0' || c == 'P')
 		return (0);
 	else if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
@@ -31,7 +31,7 @@ static bool	check_map_more(int i, int j, t_values *vars)
 {
 	if (check_character(vars->map[i][j], vars, i, j))
 		return (1);
-	if (vars->map[i][j] == '0')
+	if (vars->map[i][j] == '0' || vars->map[i][j] == 'P')
 	{
 		if (left_wall(i, j, vars) || right_wall(i, j, vars) \
 		|| top_wall(i, j, vars) || bottom_wall(i, j, vars))

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:40:29 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 08:39:36 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:50:29 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	left_border(int i, int j, t_values *vars)
 		j--;
 		if (vars->map[i][j] == '1')
 			return (0);
-		if (vars->map[i][j] == '0')
+		if (vars->map[i][j] == '0' || vars->map[i][j] == 'P')
 		{
 			ft_putstr_fd("Error!\nThe map is scrambled.\n", 2);
 			return (1);
@@ -35,7 +35,7 @@ bool	right_border(int i, int j, t_values *vars)
 		j++;
 		if (vars->map[i][j] == '1')
 			return (0);
-		if (vars->map[i][j] == '0')
+		if (vars->map[i][j] == '0'  || vars->map[i][j] == 'P')
 		{
 			ft_putstr_fd("Error!\nThe map is scrambled.\n", 2);
 			return (1);
@@ -51,7 +51,7 @@ bool	top_border(int i, int j, t_values *vars)
 		i--;
 		if (vars->map[i][j] == '1')
 			return (0);
-		if (vars->map[i][j] == '0')
+		if (vars->map[i][j] == '0' || vars->map[i][j] == 'P')
 		{
 			ft_putstr_fd("Error!\nThe map is scrambled.\n", 2);
 			return (1);
@@ -67,7 +67,7 @@ bool	bottom_border(int i, int j, t_values *vars)
 		i++;
 		if (vars->map[i][j] == '1')
 			return (0);
-		if (vars->map[i][j] == '0')
+		if (vars->map[i][j] == '0'  || vars->map[i][j] == 'P')
 		{
 			ft_putstr_fd("Error!\nThe map is scrambled.\n", 2);
 			return (1);
