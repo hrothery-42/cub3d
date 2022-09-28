@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 09:18:06 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:33:59 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void	replace_newline(char *line);
 bool	check_character(char c, t_values *vars, int i, int j);
 bool	empty_lines(t_values *vars);
 bool	check_map(t_values *vars);
+bool	init_to_null(t_values *vars);
 
 //parser_utils2.c
 bool	save_tex(char **tmp, t_values *vars, int i);

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 08:33:44 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 08:34:06 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:37:24 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,17 @@ bool	free_everything(t_values *vars)
 	{
 		if (vars->pattern[i])
 			free(vars->pattern[i]);
+		if (vars->t_tex[i])
+			mlx_destroy_image(vars->mlx_ptr, vars->t_tex[i]);
 		i++;
 	}
 	if (vars->win_ptr)
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-	free(vars->mlx_ptr);
+	if (vars->mlx_ptr)
+	{
+		mlx_destroy_display(vars->mlx_ptr);
+		free(vars->mlx_ptr);
+	}
 	return (1);
 }
 

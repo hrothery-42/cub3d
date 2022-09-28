@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 08:32:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 08:33:31 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:34:05 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 
 	if (check_file(argc, argv[1]))
 		return (1);
-	if (parse_input(argv[1], &vars))
+	if (init_to_null(&vars) || parse_input(argv[1], &vars))
 		return (free_map(&vars));
 	if (init_mlx(&vars))
 	{

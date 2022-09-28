@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:56:38 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/27 15:37:56 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:31:30 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ bool	free_everything(t_values *vars)
 	{
 		if (vars->pattern[i])
 			free(vars->pattern[i]);
+		if (vars->t_tex[i])
+			mlx_destroy_image(vars->mlx_ptr, vars->t_tex[i]);
 		i++;
 	}
 	if (vars->win_ptr)

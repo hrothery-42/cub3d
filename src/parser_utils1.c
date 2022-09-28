@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:14:08 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:33:36 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,24 @@ bool	check_map(t_values *vars)
 		ft_putstr_fd("Error!\nWrong number of starting positions.\n", 2);
 		return (1);
 	}
+	return (0);
+}
+
+bool	init_to_null(t_values *vars)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		vars->pattern[i] = NULL;
+		vars->t_tex[i] = NULL;
+		vars->itex[i] = NULL;
+		i++;
+	}
+	vars->map = NULL;
+	vars->img_ptr = NULL;
+	vars->win_ptr = NULL;
+	vars->mlx_ptr = NULL;
 	return (0);
 }
