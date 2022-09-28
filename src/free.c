@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:56:38 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:42:40 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:15:41 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ bool	free_map(t_values *vars)
 	}
 	return (1);
 }
-
 
 bool	color_err(char **tmp)
 {

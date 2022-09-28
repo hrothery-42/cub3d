@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:34:21 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:02:00 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	count_commas(char *s)
 bool	save_tex(char **tmp, t_values *vars, int i)
 {
 	char	*pattern;
-	
+
 	if (!tmp[1] || tmp[2])
 	{
 		ft_putstr_fd("Error!\nInvalid identifier/ data.\n", 2);
@@ -52,18 +52,14 @@ bool	save_tex(char **tmp, t_values *vars, int i)
 bool	textures(t_values *vars)
 {
 	int	i;
-	//int	j;
 
 	i = 0;
-	//j = 0;
 	while (i < 4)
 	{
 		(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, vars->pattern[i],
 					&vars->width[i], &vars->height[i]));
 		if (!vars->t_tex[i])
 		{
-			/* while (j < i)
-				mlx_destroy_image(vars->mlx_ptr, vars->t_tex[j++]); */
 			ft_putstr_fd("Error!\nCheck file path for wall pattern.\n", 2);
 			return (1);
 		}

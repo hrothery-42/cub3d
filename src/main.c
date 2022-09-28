@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 09:43:00 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:05:29 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	draw_fc(t_values *vars)
+{
+	int		x;
+	int		y;
+	char	*pix;
+
+	x = 0;
+	vars->color = vars->ceiling;
+	while (x < SCREENHEIGHT)
+	{
+		if (x == SCREENHEIGHT / 2)
+			vars->color = vars->floor;
+		y = 0;
+		while (y < SCREENWIDTH)
+		{
+			pix = vars->img + (int)x * vars->line + (int)y * (vars->bits / 8);
+			*(unsigned int *)pix = vars->color;
+			y++;
+		}
+		x++;
+	}
+}
 
 bool	free_everything(t_values *vars)
 {
@@ -35,6 +58,53 @@ bool	free_everything(t_values *vars)
 	return (1);
 }
 
+int	mouse(int x, int y, t_values *vars)
+{
+	if (y && x < vars->old_x)
+	{
+		vars->olddirx = vars->dir.x;
+		vars->dir.x = vars->dir.x * cos(TURN) - vars->dir.y * sin(TURN);
+		vars->dir.y = vars->olddirx * sin(TURN) + vars->dir.y * cos(TURN);
+		vars->oldplanex = vars->plane.x;
+		vars->plane.x = vars->plane.x * cos(TURN) - vars->plane.y * sin(TURN);
+		vars->plane.y = vars->oldplanex * sin(TURN) + vars->plane.y * cos(TURN);
+	}
+	else if (y && x > vars->old_x)
+	{
+		vars->olddirx = vars->dir.x;
+		vars->dir.x = vars->dir.x * cos(-1 * TURN)
+			- vars->dir.y * sin(-1 * TURN);
+		vars->dir.y = vars->olddirx * sin(-1 * TURN)
+			+ vars->dir.y * cos(-1 * TURN);
+		vars->oldplanex = vars->plane.x;
+		vars->plane.x = vars->plane.x * cos(-1 * TURN) - vars->plane.y
+			* sin(-1 * TURN);
+		vars->plane.y = vars->oldplanex * sin(-1 * TURN) + vars->plane.y
+			* cos(-1 * TURN);
+	}
+	vars->old_x = x;
+	return (0);
+}
+
+int	keys_release(int key, t_values *vars)
+{
+	if (key == EXIT_KEY)
+		xclose(vars);
+	else if (key == W_KEY)
+		vars->w = 0;
+	else if (key == S_KEY)
+		vars->s = 0;
+	else if (key == A_KEY)
+		vars->a = 0;
+	else if (key == D_KEY)
+		vars->d = 0;
+	else if (key == LEFT_ARROW)
+		vars->left = 0;
+	else if (key == RIGHT_ARROW)
+		vars->right = 0;
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_values		vars;
@@ -51,7 +121,9 @@ int	main(int argc, char **argv)
 	if (textures(&vars))
 		return (free_everything(&vars));
 	mlx_hook(vars.win_ptr, 2, 0, keys, &vars);
+	mlx_hook(vars.win_ptr, 3, 0, keys_release, &vars);
 	mlx_hook(vars.win_ptr, 17, 0, xclose, &vars);
+	mlx_hook(vars.win_ptr, 6, 0, mouse, &vars);
 	mlx_loop_hook(vars.mlx_ptr, test, &vars);
 	mlx_loop(vars.mlx_ptr);
 	free_everything(&vars);

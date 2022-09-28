@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:12:12 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/25 14:37:29 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:07:49 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,72 @@ void	drawwalls(int x, t_values *vars)
 	}
 }
 
-void	draw_fc(t_values *vars)
+void	draw_mini(t_values *vars, int x, int y, unsigned int color)
+{
+	char	*pix;
+	int		x1;
+	int		y1;
+
+	x1 = x * 5;
+	while (x1 < ((x * 5) + 5))
+	{
+		y1 = y * 5;
+		while (y1 < ((y * 5) + 5))
+		{
+			pix = vars->img + (int)x1 * vars->line + (int)y1 * (vars->bits / 8);
+			*(unsigned int *)pix = color;
+			y1++;
+		}
+		x1++;
+	}
+}
+
+void	draw_player(t_values *vars)
+{
+	double		x1;
+	double		y1;
+	double		scale;
+	char		*pix;
+
+	x1 = vars->pos.x * 5;
+	y1 = vars->pos.y * 5;
+	scale = 3;
+	while (x1 < (vars->pos.x * 5) + 5)
+	{
+		y1 = (vars->pos.y * 5) + 5 - scale;
+		while (y1 < (vars->pos.y * 5) + scale)
+		{
+			pix = vars->img + (int)x1 * vars->line + (int)y1 * (vars->bits / 8);
+			*(unsigned int *)pix = 0xff0000;
+			y1++;
+		}
+		if (x1 >= ((vars->pos.x * 5) + 2))
+			scale = scale - 2;
+		scale++;
+		x1++;
+	}
+}
+
+void	mini_map(t_values *vars)
 {
 	int		x;
 	int		y;
-	char	*pix;
 
 	x = 0;
-	vars->color = vars->ceiling;
-	while (x < SCREENHEIGHT)
+	while (vars->map[x])
 	{
-		if (x == SCREENHEIGHT / 2)
-			vars->color = vars->floor;
 		y = 0;
-		while (y < SCREENWIDTH)
+		while (vars->map[x][y])
 		{
-			pix = vars->img + (int)x * vars->line + (int)y * (vars->bits / 8);
-			*(unsigned int *)pix = vars->color;
+			if (vars->map[x][y] == '1')
+				draw_mini(vars, x, y, 0xffffff);
+			else if (vars->map[x][y] == '0')
+				draw_mini(vars, x, y, 0x000000);
 			y++;
 		}
 		x++;
 	}
+	draw_player(vars);
 }
 
 int	test(t_values *vars)
@@ -61,8 +106,15 @@ int	test(t_values *vars)
 	vars->img_ptr = mlx_new_image(vars->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
 	vars->img = mlx_get_data_addr(vars->img_ptr, &vars->bits, &vars->line,
 			&vars->end);
+	stepforward(vars);
+	stepbackward(vars);
+	turnleft(vars);
+	turnright(vars);
+	stepright(vars);
+	stepleft(vars);
 	draw_fc(vars);
 	raycasting(vars);
+	mini_map(vars);
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
 	mlx_destroy_image(vars->mlx_ptr, old_img);
 	return (0);

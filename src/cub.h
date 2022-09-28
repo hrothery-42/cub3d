@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 09:45:53 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:57:11 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #  include <X11/X.h>
 #  include <X11/keysym.h>
-# include "../mlx/mlx.h"
+#  include "../mlx/mlx.h"
 # endif
 
 # ifdef __APPLE__
@@ -36,8 +36,8 @@
 
 # define SCREENWIDTH 800
 # define SCREENHEIGHT 600
-# define TURN 0.05
-# define STEP_INTERVAL 0.3
+# define TURN 0.03
+# define STEP_INTERVAL 0.1
 
 # define FLOOR 0
 # define CEILING 1
@@ -113,9 +113,15 @@ typedef struct s_values
 	int					nr_start_pos;
 	int					floor;
 	int					ceiling;
+	int					w;
+	int					s;
+	int					a;
+	int					d;
+	int					left;
+	int					right;
+	int					old_x;
 
 }	t_values;
-
 
 //color_utils.c
 int		get_color(char *line, char **tmp, t_values *vars, int i);
@@ -128,13 +134,19 @@ bool	invalid_data(char **tmp);
 
 //helpers.c
 void	drawwalls(int x, t_values *vars);
-void	draw_fc(t_values *vars);
+void	draw_mini(t_values *vars, int x, int y, unsigned int color);
+void	draw_player(t_values *vars);
+void	mini_map(t_values *vars);
 int		test(t_values *vars);
 
 //init_pos.c
 void	init_pos_and_dir(char c, t_values *vars, int i, int j);
 
 //keys.c
+int		turnleft(t_values *vars);
+int		turnright(t_values *vars);
+int		stepright(t_values *vars);
+int		stepleft(t_values *vars);
 int		keys(int key, t_values *vars);
 
 //main_helpers.c
@@ -146,6 +158,7 @@ bool	init_to_null(t_values *vars);
 
 //main.c, main_linux.c
 bool	free_everything(t_values *vars);
+void	draw_fc(t_values *vars);
 
 //parser_utils0.c
 bool	init_value(char *line, t_values *vars);
@@ -182,7 +195,8 @@ bool	top_border(int i, int j, t_values *vars);
 bool	bottom_border(int i, int j, t_values *vars);
 
 //stepforward.c
-int		stepforward(t_values *vars);
+void	stepforward(t_values *vars);
+void	stepbackward(t_values *vars);
 
 //wall_check.c
 bool	left_wall(int i, int j, t_values *vars);
