@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 11:08:41 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:44:21 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #  include <X11/X.h>
 #  include <X11/keysym.h>
-# include "../mlx/mlx.h"
+#  include "../mlx/mlx.h"
 # endif
 
 # ifdef __APPLE__
@@ -116,7 +116,6 @@ typedef struct s_values
 	int					ceiling;
 
 }	t_values;
-
 
 //color_utils.c
 int		get_color(char *line, char **tmp, t_values *vars, int i);

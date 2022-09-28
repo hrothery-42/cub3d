@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 09:13:20 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 10:12:28 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:45:10 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	get_color2(char *color, t_values *vars, int i)
 	tmp = ft_split(color, ',');
 	if (!tmp[2] || tmp[3] || count_commas(color) != 2)
 		return (color_err(tmp));
-	if (!ft_strisdigit(tmp[0]) || !ft_strisdigit(tmp[1]) || !ft_strisdigit(tmp[2]))
+	if (!ft_strisdigit(tmp[0]) || !ft_strisdigit(tmp[1])
+		|| !ft_strisdigit(tmp[2]))
 		return (color_err(tmp));
 	l.red = ft_atoi(tmp[0]);
 	l.green = ft_atoi(tmp[1]);
