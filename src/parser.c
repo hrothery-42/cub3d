@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:27:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 10:55:09 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:25:50 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ bool	init_t_values(char *argv, t_values *vars)
 	while (line)
 	{
 		line = get_next_line(fd);
-		replace_newline(line);
 		line = replace_tabs(line);
+		replace_newline(line);
 		if (!ret)
 			sort_data(vars, line, &count, &ret);
 		free(line);

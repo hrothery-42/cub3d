@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 11:12:06 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:26:26 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ char	*replace_tabs(char *line)
 	if (!line)
 		return (0);
 	while (line[i])
-		if (line[i++] != '\t')
+		if (line[i++] == '\t')
 			count++;
 	if (count)
 	{
