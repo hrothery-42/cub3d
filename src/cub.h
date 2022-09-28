@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 14:19:27 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:34:52 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,11 @@ bool	left_border(int i, int j, t_values *vars);
 bool	right_border(int i, int j, t_values *vars);
 bool	top_border(int i, int j, t_values *vars);
 bool	bottom_border(int i, int j, t_values *vars);
+
+//sprites.c
+bool	sprite(t_values *vars);
+int	init_sprite(t_values *vars, char **tmp);
+
 
 //stepforward.c
 int		stepforward(t_values *vars);

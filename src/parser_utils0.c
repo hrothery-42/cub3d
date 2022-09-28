@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 14:18:52 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:35:05 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	init_value(char *line, t_values *vars)
 	else if (!ft_strcmp(tmp[0], "C"))
 		ret = get_color(line, tmp, vars, CEILING);
 	else if (!ft_strcmp(tmp[0], "S"))
-		ret = init_sprite(tmp, vars, line);
+		ret = init_sprite(tmp, vars);
 	else
 		return (invalid_data(tmp));
 	ft_double_free(tmp);

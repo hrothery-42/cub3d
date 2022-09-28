@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 13:56:38 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 13:43:52 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:36:34 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ bool	free_map(t_values *vars)
 			free(vars->pattern[i]);
 		i++;
 	}
+	if (vars->s.path)
+		free(vars->s.path);
 	return (1);
 }
 

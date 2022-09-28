@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 09:38:18 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:39:30 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:38:00 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,8 @@ bool	init_to_null(t_values *vars)
 	vars->img_ptr = NULL;
 	vars->win_ptr = NULL;
 	vars->mlx_ptr = NULL;
+	vars->s.path = NULL;
+	vars->s.s_img = NULL;
+	vars->s.s_ptr = NULL;
 	return (0);
 }

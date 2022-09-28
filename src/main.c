@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 09:43:00 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:35:46 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	free_everything(t_values *vars)
 			mlx_destroy_image(vars->mlx_ptr, vars->t_tex[i]);
 		i++;
 	}
+	free(vars->s.path);
 	if (vars->win_ptr)
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
 	free(vars->mlx_ptr);
@@ -48,7 +49,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error!\nMLX not running.\n", 2);
 		return (free_everything(&vars));
 	}
-	if (textures(&vars))
+	if (textures(&vars) || sprite(&vars))
 		return (free_everything(&vars));
 	mlx_hook(vars.win_ptr, 2, 0, keys, &vars);
 	mlx_hook(vars.win_ptr, 17, 0, xclose, &vars);

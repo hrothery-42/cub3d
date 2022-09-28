@@ -6,13 +6,13 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:55:47 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 14:12:14 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:34:42 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	init_sprite(t_values *vars, char *line)
+int	init_sprite(t_values *vars, char **tmp)
 {
 	if (!tmp[1] || tmp[2])
 	{
@@ -30,7 +30,7 @@ int	init_sprite(t_values *vars, char *line)
 	return (0);
 }
 
-bool	render_sprite(t_values *vars)
+bool	sprite(t_values *vars)
 {
 	s->s_ptr = mlx_xpm_file_to_image(vars->mlx_ptr, s->path, &s->w, &s->h);
 	if (!s_ptr)
