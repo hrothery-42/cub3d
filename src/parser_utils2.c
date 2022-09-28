@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:34:21 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:04:09 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	save_tex(char **tmp, t_values *vars, int i)
 	
 	if (!tmp[1] || tmp[2])
 	{
-		ft_putstr_fd("Error!\nInvalid identifier/ data.\n", 2);
+		ft_putstr_fd("Error!\nInvalid data: wall texture.\n", 2);
 		return (1);
 	}
 	pattern = tmp[1];
@@ -52,18 +52,14 @@ bool	save_tex(char **tmp, t_values *vars, int i)
 bool	textures(t_values *vars)
 {
 	int	i;
-	//int	j;
 
 	i = 0;
-	//j = 0;
 	while (i < 4)
 	{
 		(vars->t_tex[i] = mlx_xpm_file_to_image(vars->mlx_ptr, vars->pattern[i],
 					&vars->width[i], &vars->height[i]));
 		if (!vars->t_tex[i])
 		{
-			/* while (j < i)
-				mlx_destroy_image(vars->mlx_ptr, vars->t_tex[j++]); */
 			ft_putstr_fd("Error!\nCheck file path for wall pattern.\n", 2);
 			return (1);
 		}
@@ -96,4 +92,53 @@ void	sort_data(t_values *vars, char *line, int *count, bool *ret)
 			return ;
 		ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
 	}
+}
+
+static char	*copy_with_spaces(char *new, char *line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (line[j])
+	{
+		if (line[j] == '\t')
+		{
+			new[i++] = ' ';
+			new[i++] = ' ';
+			new[i++] = ' ';
+			new[i++] = ' ';
+		}
+		else
+			new[i++] = line[j];
+		j++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
+char	*replace_tabs(char *line)
+{
+	int		i;
+	int		count;
+	char	*new;
+
+	i = 0;
+	count = 0;
+	if (!line)
+		return (0);
+	while(line[i])
+		if (line[i++] != '\t')
+			count++;
+	if (count)
+	{
+		new = malloc(sizeof(char) * (1 + ft_strlen(line) + (count * 3)));
+		if (!new)
+			return (0);
+		new = copy_with_spaces(new, line);
+		free(line);
+		return (new);
+	}
+	return (line);
 }

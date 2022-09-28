@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 09:45:53 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:52:28 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ bool	save_tex(char **tmp, t_values *vars, int i);
 void	sort_data(t_values *vars, char *line, int *count, bool *ret);
 bool	textures(t_values *vars);
 int		count_commas(char *s);
+char	*replace_tabs(char *line);
 
 //parser.c
 int		parse_input(char *argv, t_values *vars);
