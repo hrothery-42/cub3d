@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 09:13:20 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:20:07 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:01:25 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*slide_line(char *line)
 		slide(line);
 	while (line[i])
 	{
+	/* 	while (line[i - 1] line[i] == ',' && ft_isspace(line[i - 1]))
+			slide(&line[i]); */
 		while (line[i] == ',' && ft_isspace(line[i + 1]))
 			slide(&line[i + 1]);
 		i++;
