@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 09:13:20 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 16:02:11 by bvarlamo         ###   ########.fr       */
+/*   Created: 2022/09/28 16:25:14 by bvarlamo          #+#    #+#             */
+/*   Updated: 2022/09/28 16:29:22 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ char	*slide_line(char *line)
 		slide(line);
 	while (line[i])
 	{
-	/* 	while (line[i - 1] line[i] == ',' && ft_isspace(line[i - 1]))
-			slide(&line[i]); */
+		while (line[i + 1] == ',' && ft_isspace(line[i]))
+		{
+			slide(&line[i]);
+			if (i > 0)
+				i--;
+		}
 		while (line[i] == ',' && ft_isspace(line[i + 1]))
 			slide(&line[i + 1]);
 		i++;

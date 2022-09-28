@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 16:02:00 by bvarlamo         ###   ########.fr       */
+/*   Created: 2022/09/28 16:29:32 by bvarlamo          #+#    #+#             */
+/*   Updated: 2022/09/28 16:29:42 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	save_tex(char **tmp, t_values *vars, int i)
 
 	if (!tmp[1] || tmp[2])
 	{
-		ft_putstr_fd("Error!\nInvalid identifier/ data.\n", 2);
+		ft_putstr_fd("Error!\nInvalid data: wall texture.\n", 2);
 		return (1);
 	}
 	pattern = tmp[1];
@@ -92,4 +92,57 @@ void	sort_data(t_values *vars, char *line, int *count, bool *ret)
 			return ;
 		ft_strlcpy(vars->map[j++], line, ft_strlen(line) + 1);
 	}
+}
+
+static char	*copy_with_spaces(char *new, char *line)
+{
+	int	i;
+	int	j;
+	int	spaces;
+
+	i = 0;
+	j = 0;
+	while (line[j])
+	{
+		if (line[j] == '\t')
+		{
+			spaces = 0;
+			while (spaces < TAB)
+			{
+				new[i++] = ' ';
+				spaces++;
+			}
+		}
+		else
+			new[i++] = line[j];
+		j++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
+char	*replace_tabs(char *line)
+{
+	int		i;
+	int		count;
+	char	*new;
+
+	i = 0;
+	count = 0;
+	if (!line)
+		return (0);
+	while (line[i])
+		if (line[i++] == '\t')
+			count++;
+	if (count)
+	{
+		new = malloc(sizeof(char) * (1 + ft_strlen(line)
+					+ (count * (TAB - 1))));
+		if (!new)
+			return (0);
+		new = copy_with_spaces(new, line);
+		free(line);
+		return (new);
+	}
+	return (line);
 }

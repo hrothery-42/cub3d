@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:57:11 by bvarlamo         ###   ########.fr       */
+/*   Created: 2022/09/28 16:29:09 by bvarlamo          #+#    #+#             */
+/*   Updated: 2022/09/28 16:29:11 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB_H
 # define CUB_H
@@ -38,6 +39,7 @@
 # define SCREENHEIGHT 600
 # define TURN 0.03
 # define STEP_INTERVAL 0.1
+# define TAB 4
 
 # define FLOOR 0
 # define CEILING 1
@@ -177,6 +179,7 @@ bool	save_tex(char **tmp, t_values *vars, int i);
 void	sort_data(t_values *vars, char *line, int *count, bool *ret);
 bool	textures(t_values *vars);
 int		count_commas(char *s);
+char	*replace_tabs(char *line);
 
 //parser.c
 int		parse_input(char *argv, t_values *vars);

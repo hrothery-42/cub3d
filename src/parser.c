@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:27:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/26 13:08:34 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:25:50 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ bool	init_t_values(char *argv, t_values *vars)
 	while (line)
 	{
 		line = get_next_line(fd);
+		line = replace_tabs(line);
 		replace_newline(line);
 		if (!ret)
 			sort_data(vars, line, &count, &ret);
@@ -70,6 +71,7 @@ static void	ft_count(int fd, t_values *vars)
 	while (line)
 	{
 		line = get_next_line(fd);
+		line = replace_tabs(line);
 		if (!map && first_char(line) == '1')
 		{
 			map = 1;
@@ -129,8 +131,6 @@ int	parse_input(char *argv, t_values *vars)
 	count_map_rows(argv, vars);
 	allocate_map(vars);
 	if (init_t_values(argv, vars) || check_map(vars))
-	{
 		return (1);
-	}
 	return (0);
 }
