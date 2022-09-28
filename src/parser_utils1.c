@@ -6,36 +6,11 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:31:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/26 11:38:32 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:14:08 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-int	get_color(char *color, t_values *vars, int i)
-{
-	char	**tmp;
-	t_color	l;
-
-	tmp = ft_split(color, ',');
-	if (!tmp[2] || tmp[3] || count_commas(color) != 2)
-		return (color_err(tmp));
-	if (!ft_strisdigit(tmp[0]) || !ft_strisdigit(tmp[1]) \
-	|| !ft_strisdigit(tmp[2]))
-		return (color_err(tmp));
-	l.red = ft_atoi(tmp[0]);
-	l.green = ft_atoi(tmp[1]);
-	l.blue = ft_atoi(tmp[2]);
-	if (l.red < 0 || l.red > 255 || l.green < 0 || l.green > 255 \
-	|| l.blue < 0 || l.blue > 255)
-		return (color_err(tmp));
-	ft_double_free(tmp);
-	if (i == FLOOR)
-		vars->floor = create_trgb(0, l.red, l.green, l.blue);
-	else if (i == CEILING)
-		vars->ceiling = create_trgb(0, l.red, l.green, l.blue);
-	return (0);
-}
 
 bool	check_character(char c, t_values *vars, int i, int j)
 {

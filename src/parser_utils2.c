@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 08:45:17 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:14:52 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,6 @@ bool	textures(t_values *vars)
 		}
 	}
 	return (0);
-}
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	int	trgb;
-
-	trgb = t << 24 | r << 16 | g << 8 | b;
-	return (trgb);
 }
 
 void	sort_data(t_values *vars, char *line, int *count, bool *ret)

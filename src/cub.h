@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 08:46:34 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:18:06 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ typedef struct s_values
 
 }	t_values;
 
+
+//color_utils.c
+int	get_color(char *line, char **tmp, t_values *vars, int i);
+
 //free.c
 bool	free_everything(t_values *vars);
 bool	free_map(t_values *vars);
@@ -145,14 +149,12 @@ char	first_char(char *line);
 void	replace_newline(char *line);
 
 //parser_utils1.c
-int		get_color(char *color, t_values *vars, int i);
 bool	check_character(char c, t_values *vars, int i, int j);
 bool	empty_lines(t_values *vars);
 bool	check_map(t_values *vars);
 
 //parser_utils2.c
 bool	save_tex(char **tmp, t_values *vars, int i);
-int		create_trgb(int t, int r, int g, int b);
 void	sort_data(t_values *vars, char *line, int *count, bool *ret);
 bool	textures(t_values *vars);
 int		count_commas(char *s);

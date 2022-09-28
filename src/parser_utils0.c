@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 08:46:07 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:10:41 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ bool	init_value(char *line, t_values *vars)
 	else if (!ft_strcmp(tmp[0], "EA"))
 		ret = save_tex(tmp, vars, EAST);
 	else if (!ft_strcmp(tmp[0], "F"))
-		ret = get_color(tmp[1], vars, FLOOR);
+		ret = get_color(line, tmp, vars, FLOOR);
 	else if (!ft_strcmp(tmp[0], "C"))
-		ret = get_color(tmp[1], vars, CEILING);
+		ret = get_color(line, tmp, vars, CEILING);
 	else
 		return (invalid_data(tmp));
 	ft_double_free(tmp);
@@ -83,5 +83,5 @@ void	replace_newline(char *line)
 		return ;
 	p = ft_strrchr(line, '\n');
 	if (p)
-		*p = ' ';
+		*p = '\0';
 }
