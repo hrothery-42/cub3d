@@ -6,7 +6,7 @@
 #    By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 09:41:29 by bvarlamo          #+#    #+#              #
-#    Updated: 2022/09/28 09:19:36 by hrothery         ###   ########.fr        #
+#    Updated: 2022/09/28 09:44:25 by hrothery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ ifeq ($(shell uname), Darwin)
 
 cub3D=	src/main.c src/keys.c src/raycastinghelpers.c src/helpers.c src/init_pos.c src/parser_utils0.c \
 		src/parser_utils1.c src/parser_utils2.c src/parser.c src/space_check.c src/wall_check.c \
-		src/stepforward.c src/free.c src/color_utils.c \
+		src/stepforward.c src/free.c src/color_utils.c src/main_helpers.c \
 
 endif
 
@@ -22,7 +22,7 @@ ifeq ($(shell uname), Linux)
 
 cub3D=	src/main_linux.c src/keys.c src/raycastinghelpers.c src/helpers.c src/init_pos.c src/parser_utils0.c \
 		src/parser_utils1.c src/parser_utils2.c src/parser.c src/space_check.c src/wall_check.c \
-		src/stepforward.c src/free_linux.c src/color_utils.c \
+		src/stepforward.c src/free.c src/color_utils.c src/main_helpers.c \
 
 endif
 

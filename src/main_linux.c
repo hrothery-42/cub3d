@@ -6,75 +6,37 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 08:32:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:34:05 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:43:24 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	xclose(t_values *vars)
-{
-	free_everything(vars);
-	exit(0);
-	return (0);
-}
-
-void	raycasting(t_values *vars)
-{
-	double	w;
-	int		x;
-
-	w = SCREENWIDTH;
-	x = 0;
-	while (x < w)
-	{
-		vars->camerax = 2 * x / w - 1;
-		raycast1(vars);
-		raycast2(vars);
-		raycast3(vars);
-		raycast4(vars);
-		raycast5(vars);
-		drawwalls(x, vars);
-		x++;
-	}
-}
-
-int	init_mlx(t_values *vars)
-{
-	vars->mlx_ptr = mlx_init();
-	if (vars->mlx_ptr == NULL)
-		return (1);
-	vars->win_ptr = mlx_new_window(vars->mlx_ptr, SCREENWIDTH,
-			SCREENHEIGHT, "Cub3D");
-	if (vars->win_ptr == NULL)
-		return (1);
-	vars->img_ptr = mlx_new_image(vars->mlx_ptr, SCREENWIDTH, SCREENHEIGHT);
-	if (vars->img_ptr == NULL)
-		return (1);
-	vars->img = mlx_get_data_addr(vars->img_ptr, &vars->bits,
-			&vars->line, &vars->end);
-	if (vars->img == NULL)
-		return (1);
-	return (0);
-}
-
-bool	check_file(int argc, char *argv)
+bool	free_everything(t_values *vars)
 {
 	int	i;
 
-	if (argc != 2)
+	i = 0;
+	ft_double_free(vars->map);
+	if (vars->img_ptr)
+		mlx_destroy_image(vars->mlx_ptr, vars->img_ptr);
+	i = 0;
+	while (i < 4)
 	{
-		ft_putstr_fd("Error!\nWrong number of arguments!  Use a cub file.\n", 2);
-		return (1);
+		if (vars->pattern[i])
+			free(vars->pattern[i]);
+		if (vars->t_tex[i])
+			mlx_destroy_image(vars->mlx_ptr, vars->t_tex[i]);
+		i++;
 	}
-	i = ft_strlen(argv) - 1;
-	if (i < 4 || argv[i] != 'b' || argv[i - 1] != 'u' || argv[i - 2] != 'c'\
-	|| argv[i - 3] != '.')
+	if (vars->win_ptr)
+		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	if (vars->mlx_ptr)
 	{
-		ft_putstr_fd("Error!\nUse a .cub file.\n", 2);
-		return (1);
+		mlx_destroy_display(vars->mlx_ptr);
+		free(vars->mlx_ptr);
 	}
-	return (0);
+	return (1);
 }
 
 int	main(int argc, char **argv)

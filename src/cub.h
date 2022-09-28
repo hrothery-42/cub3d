@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 09:33:59 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 09:45:53 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,9 @@ typedef struct s_values
 
 
 //color_utils.c
-int	get_color(char *line, char **tmp, t_values *vars, int i);
+int		get_color(char *line, char **tmp, t_values *vars, int i);
 
 //free.c
-bool	free_everything(t_values *vars);
 bool	free_map(t_values *vars);
 bool	free_paths(t_values *vars);
 bool	color_err(char **tmp);
@@ -138,9 +137,15 @@ void	init_pos_and_dir(char c, t_values *vars, int i, int j);
 //keys.c
 int		keys(int key, t_values *vars);
 
-//main.c
+//main_helpers.c
 int		xclose(t_values *vars);
 void	raycasting(t_values *vars);
+int		init_mlx(t_values *vars);
+bool	check_file(int argc, char *argv);
+bool	init_to_null(t_values *vars);
+
+//main.c, main_linux.c
+bool	free_everything(t_values *vars);
 
 //parser_utils0.c
 bool	init_value(char *line, t_values *vars);
