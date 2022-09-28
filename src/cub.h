@@ -3,25 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/27 15:37:49 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/28 08:34:19 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
-//only on Linux
-//# include <X11/X.h>
-//# include <X11/keysym.h>
-//# include "mlx/mlx.h"
+
+# ifdef __linux__
+
+#  include <X11/X.h>
+#  include <X11/keysym.h>
+# include "../mlx/mlx.h"
+# endif
+
+# ifdef __APPLE__
+
+#  include "../minilibx_opengl/mlx.h"
+# endif
+
 # include "keycodes.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-# include "../minilibx_opengl/mlx.h"
 # include <fcntl.h>
 # include <stdbool.h>
 # include "../Libft/libft.h"
