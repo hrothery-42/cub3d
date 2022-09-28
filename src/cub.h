@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 14:34:52 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:16:37 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@
 # define WEST 1
 # define EAST 0
 
+#define MLX_SYNC_IMAGE_WRITABLE 1
+#define MLX_SYNC_WIN_FLUC_CMD 2
+#define MLX_SYNC_WIN_CMD_COMPLETED 3
+
 typedef struct s_sprite
 {
 	int		n;
@@ -55,6 +59,9 @@ typedef struct s_sprite
 	int		w;
 	int		h;
 	char	*path;
+	int		bits;
+	int		line;
+	int		end;
 }	t_sprite;
 
 typedef struct s_color
@@ -120,7 +127,7 @@ typedef struct s_values
 	char				**map;
 	int					nr_rows;
 	int					nr_columns;
-	int					nswefcs[7];
+	int					nswefc[7];
 	int					nr_start_pos;
 	int					floor;
 	int					ceiling;
@@ -194,7 +201,7 @@ bool	bottom_border(int i, int j, t_values *vars);
 
 //sprites.c
 bool	sprite(t_values *vars);
-int	init_sprite(t_values *vars, char **tmp);
+int	init_sprite(char **tmp, t_values *vars);
 
 
 //stepforward.c

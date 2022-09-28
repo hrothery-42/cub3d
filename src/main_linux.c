@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 08:32:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 14:36:05 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:46:35 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error!\nMLX not running.\n", 2);
 		return (free_everything(&vars));
 	}
-	if (textures(&vars) || sprite(vars));
+	if (textures(&vars) || sprite(&vars))
 		return (free_everything(&vars));
 	mlx_key_hook(vars.win_ptr, keys, &vars);
 	mlx_hook(vars.win_ptr, 17, 0, xclose, &vars);

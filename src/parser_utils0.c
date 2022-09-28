@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 14:35:05 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:38:22 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	init_value(char *line, t_values *vars)
 		ret = get_color(line, tmp, vars, FLOOR);
 	else if (!ft_strcmp(tmp[0], "C"))
 		ret = get_color(line, tmp, vars, CEILING);
-	else if (!ft_strcmp(tmp[0], "S"))
+	else if (!ft_strcmp(tmp[0], "P"))
 		ret = init_sprite(tmp, vars);
 	else
 		return (invalid_data(tmp));
@@ -55,7 +55,7 @@ void	write_nswefc(t_values *vars, char *line)
 		vars->nswefc[4]++;
 	else if (c == 'C')
 		vars->nswefc[5]++;
-	else if (c == 'S')
+	else if (c == 'P')
 		vars->s.n++;
 	else if (c == '\0' || c == '\n')
 		return ;
