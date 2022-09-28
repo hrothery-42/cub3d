@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:27:26 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 11:25:50 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:28:34 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,30 @@ static void	ft_count(int fd, t_values *vars)
 	}
 }
 
+void	check_the_data(t_values *vars)
+{
+	int	i;
+
+	i = 0;
+	while (i < 7)
+	{
+		if (vars->nswefc[i] != 1)
+		{
+			ft_putstr_fd("Error!\nMissing/ duplicate/ false identifiers.\n", 2);
+			exit(0);
+		}
+		i++;
+	}
+	if (vars->s.n > 1)
+	{
+		ft_putstr_fd("Error!\nToo many sprites.\n", 2);
+		exit (0);
+	}
+}
+
 void	count_map_rows(char *argv, t_values *vars)
 {
 	int		fd;
-	int		i;
 
 	vars->nr_rows = 0;
 	vars->nr_columns = 0;
@@ -105,16 +125,7 @@ void	count_map_rows(char *argv, t_values *vars)
 	}
 	ft_count(fd, vars);
 	close(fd);
-	i = 0;
-	while (i < 7)
-	{
-		if (vars->nswefc[i] != 1)
-		{
-			ft_putstr_fd("Error!\nMissing/ duplicate/ false identifiers.\n", 2);
-			exit(0);
-		}
-		i++;
-	}
+	check_the_data(vars);
 }
 
 int	parse_input(char *argv, t_values *vars)
@@ -128,6 +139,7 @@ int	parse_input(char *argv, t_values *vars)
 	i = 0;
 	while (i < 4)
 		vars->pattern[i++] = NULL;
+	vars->s.n = 0;
 	count_map_rows(argv, vars);
 	allocate_map(vars);
 	if (init_t_values(argv, vars) || check_map(vars))

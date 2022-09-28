@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:12:12 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/25 14:37:29 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:04:19 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	test(t_values *vars)
 			&vars->end);
 	draw_fc(vars);
 	raycasting(vars);
+	render_sprite(vars);
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
 	mlx_destroy_image(vars->mlx_ptr, old_img);
 	return (0);

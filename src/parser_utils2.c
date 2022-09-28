@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 11:26:26 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:31:27 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	save_tex(char **tmp, t_values *vars, int i)
 	vars->pattern[i] = malloc(sizeof(char) * (ft_strlen(pattern) + 1));
 	if (!vars->pattern[i])
 	{
-		ft_putstr_fd("Error!\nMemory allocation failed.\n", 2);
+		ft_putstr_fd("Error!\nMemory allocation failed: pattern.\n", 2);
 		free_everything(vars);
 		exit(0);
 	}
@@ -77,16 +77,21 @@ bool	textures(t_values *vars)
 void	sort_data(t_values *vars, char *line, int *count, bool *ret)
 {
 	int	j;
+	int	n;
 
-	if (*count < 6 && !is_only_whitespaces(line))
+	if (vars->s.n == 1)
+		n = 7;
+	else
+		n = 6;
+	if (*count < n && !is_only_whitespaces(line))
 	{
 		(*count)++;
 		if (init_value(line, vars))
 			*ret = 1;
 	}
-	else if ((*count == 6 && !is_only_whitespaces(line)) || *count > 6)
+	else if ((*count == n && !is_only_whitespaces(line)) || *count > n)
 	{
-		j = (*count) - 6;
+		j = (*count) - n;
 		(*count)++;
 		if (j == vars->nr_rows)
 			return ;

@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 13:44:21 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:19:27 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@
 # define SOUTH 3
 # define WEST 1
 # define EAST 0
+
+typedef struct s_sprite
+{
+	int		n;
+	void	*s_img;
+	void	*s_ptr;
+	int		w;
+	int		h;
+	char	*path;
+}	t_sprite;
 
 typedef struct s_color
 {
@@ -110,11 +120,11 @@ typedef struct s_values
 	char				**map;
 	int					nr_rows;
 	int					nr_columns;
-	int					nswefc[7];
+	int					nswefcs[7];
 	int					nr_start_pos;
 	int					floor;
 	int					ceiling;
-
+	t_sprite			s;
 }	t_values;
 
 //color_utils.c
