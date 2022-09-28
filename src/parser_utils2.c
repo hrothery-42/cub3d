@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 11:04:09 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:12:06 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	count_commas(char *s)
 bool	save_tex(char **tmp, t_values *vars, int i)
 {
 	char	*pattern;
-	
+
 	if (!tmp[1] || tmp[2])
 	{
 		ft_putstr_fd("Error!\nInvalid data: wall texture.\n", 2);
@@ -98,6 +98,7 @@ static char	*copy_with_spaces(char *new, char *line)
 {
 	int	i;
 	int	j;
+	int	spaces;
 
 	i = 0;
 	j = 0;
@@ -105,10 +106,12 @@ static char	*copy_with_spaces(char *new, char *line)
 	{
 		if (line[j] == '\t')
 		{
-			new[i++] = ' ';
-			new[i++] = ' ';
-			new[i++] = ' ';
-			new[i++] = ' ';
+			spaces = 0;
+			while (spaces < TAB)
+			{
+				new[i++] = ' ';
+				spaces++;
+			}
 		}
 		else
 			new[i++] = line[j];
@@ -128,12 +131,13 @@ char	*replace_tabs(char *line)
 	count = 0;
 	if (!line)
 		return (0);
-	while(line[i])
+	while (line[i])
 		if (line[i++] != '\t')
 			count++;
 	if (count)
 	{
-		new = malloc(sizeof(char) * (1 + ft_strlen(line) + (count * 3)));
+		new = malloc(sizeof(char) * (1 + ft_strlen(line)
+					+ (count * (TAB - 1))));
 		if (!new)
 			return (0);
 		new = copy_with_spaces(new, line);
