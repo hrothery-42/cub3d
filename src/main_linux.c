@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_linux.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 08:32:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 15:11:04 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:42:02 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,34 @@ bool	free_everything(t_values *vars)
 	return (1);
 }
 
+int	mouse(int x, int y, t_values *vars)
+{
+	if (y && x < vars->old_x)
+	{
+		vars->olddirx = vars->dir.x;
+		vars->dir.x = vars->dir.x * cos(TURN) - vars->dir.y * sin(TURN);
+		vars->dir.y = vars->olddirx * sin(TURN) + vars->dir.y * cos(TURN);
+		vars->oldplanex = vars->plane.x;
+		vars->plane.x = vars->plane.x * cos(TURN) - vars->plane.y * sin(TURN);
+		vars->plane.y = vars->oldplanex * sin(TURN) + vars->plane.y * cos(TURN);
+	}
+	else if (y && x > vars->old_x)
+	{
+		vars->olddirx = vars->dir.x;
+		vars->dir.x = vars->dir.x * cos(-1 * TURN)
+			- vars->dir.y * sin(-1 * TURN);
+		vars->dir.y = vars->olddirx * sin(-1 * TURN)
+			+ vars->dir.y * cos(-1 * TURN);
+		vars->oldplanex = vars->plane.x;
+		vars->plane.x = vars->plane.x * cos(-1 * TURN) - vars->plane.y
+			* sin(-1 * TURN);
+		vars->plane.y = vars->oldplanex * sin(-1 * TURN) + vars->plane.y
+			* cos(-1 * TURN);
+	}
+	vars->old_x = x;
+	return (0);
+}
+
 int	keys_release(int key, t_values *vars)
 {
 	if (key == EXIT_KEY)
@@ -96,7 +124,9 @@ int	main(int argc, char **argv)
 	}
 	if (textures(&vars))
 		return (free_everything(&vars));
-	mlx_key_hook(vars.win_ptr, keys, &vars);
+	mlx_hook(vars.win_ptr, 2, 1L << 0, keys, &vars);
+	mlx_hook(vars.win_ptr, 3, 1L << 1, keys_release, &vars);
+	mlx_hook(vars.win_ptr, 6, 1L << 6, mouse, &vars);
 	mlx_hook(vars.win_ptr, 17, 0, xclose, &vars);
 	mlx_loop_hook(vars.mlx_ptr, test, &vars);
 	mlx_loop(vars.mlx_ptr);
