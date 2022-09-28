@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:42:24 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 11:44:20 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:31:41 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,11 @@ void	init_pos_and_dir(char c, t_values *vars, int i, int j)
 		init_w(vars);
 	else if (c == 'E')
 		init_e(vars);
+	vars->w = 0;
+	vars->s = 0;
+	vars->a = 0;
+	vars->d = 0;
+	vars->left = 0;
+	vars->right = 0;
+	vars->old_x = 0;
 }
