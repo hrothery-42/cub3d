@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:30:40 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/27 15:42:12 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/28 08:46:07 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ bool	init_value(char *line, t_values *vars)
 	bool	ret;
 
 	tmp = ft_split(line, ' ');
-	if (!tmp[1] || tmp[2])
-		return (invalid_data(tmp));
-	else if (!ft_strcmp(tmp[0], "NO"))
-		ret = save_tex(tmp[1], vars, NORTH);
+	if (!ft_strcmp(tmp[0], "NO"))
+		ret = save_tex(tmp, vars, NORTH);
 	else if (!ft_strcmp(tmp[0], "SO"))
-		ret = save_tex(tmp[1], vars, SOUTH);
+		ret = save_tex(tmp, vars, SOUTH);
 	else if (!ft_strcmp(tmp[0], "WE"))
-		ret = save_tex(tmp[1], vars, WEST);
+		ret = save_tex(tmp, vars, WEST);
 	else if (!ft_strcmp(tmp[0], "EA"))
-		ret = save_tex(tmp[1], vars, EAST);
+		ret = save_tex(tmp, vars, EAST);
 	else if (!ft_strcmp(tmp[0], "F"))
 		ret = get_color(tmp[1], vars, FLOOR);
 	else if (!ft_strcmp(tmp[0], "C"))

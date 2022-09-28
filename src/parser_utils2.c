@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 10:37:56 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/26 11:34:32 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 08:45:17 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,16 @@ int	count_commas(char *s)
 	return (commas);
 }
 
-bool	save_tex(char *pattern, t_values *vars, int i)
+bool	save_tex(char **tmp, t_values *vars, int i)
 {
+	char	*pattern;
+	
+	if (!tmp[1] || tmp[2])
+	{
+		ft_putstr_fd("Error!\nInvalid identifier/ data.\n", 2);
+		return (1);
+	}
+	pattern = tmp[1];
 	vars->pattern[i] = malloc(sizeof(char) * (ft_strlen(pattern) + 1));
 	if (!vars->pattern[i])
 	{

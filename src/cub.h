@@ -6,7 +6,7 @@
 /*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:21:32 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 08:34:19 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/28 08:46:34 by hrothery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ bool	empty_lines(t_values *vars);
 bool	check_map(t_values *vars);
 
 //parser_utils2.c
-bool	save_tex(char *pattern, t_values *vars, int i);
+bool	save_tex(char **tmp, t_values *vars, int i);
 int		create_trgb(int t, int r, int g, int b);
 void	sort_data(t_values *vars, char *line, int *count, bool *ret);
 bool	textures(t_values *vars);
