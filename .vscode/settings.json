@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"__string": "c",
+		"algorithm": "c",
+		"functional": "c",
+		"locale": "c",
+		"__cxx_version": "c",
+		"__hash_table": "c",
+		"type_traits": "c"
+	}
+}

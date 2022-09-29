@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrothery <hrothery@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 09:38:18 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 09:39:30 by hrothery         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:35:10 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

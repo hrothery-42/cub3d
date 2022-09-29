@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:12:12 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 15:07:49 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:23:41 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int	test(t_values *vars)
 	draw_fc(vars);
 	raycasting(vars);
 	mini_map(vars);
+	mlx_clear_window(vars->mlx_ptr, vars->win_ptr);
 	mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, vars->img_ptr, 0, 0);
 	mlx_destroy_image(vars->mlx_ptr, old_img);
 	return (0);

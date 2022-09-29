@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 12:09:17 by bvarlamo          #+#    #+#             */
-/*   Updated: 2022/09/28 16:05:29 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:44:58 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ bool	free_everything(t_values *vars)
 	}
 	if (vars->win_ptr)
 		mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
-	free(vars->mlx_ptr);
 	return (1);
 }
 
