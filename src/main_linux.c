@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 08:32:53 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/28 16:54:06 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:05:44 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	free_everything(t_values *vars)
 		mlx_destroy_display(vars->mlx_ptr);
 		free(vars->mlx_ptr);
 	}
-	return (1);
+	exit(1);
 }
 
 int	mouse(int x, int y, t_values *vars)

@@ -6,7 +6,7 @@
 /*   By: bvarlamo <bvarlamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 09:38:18 by hrothery          #+#    #+#             */
-/*   Updated: 2022/09/29 11:35:10 by bvarlamo         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:00:39 by bvarlamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	xclose(t_values *vars)
 {
 	free_everything(vars);
-	exit(0);
 	return (0);
 }
 
